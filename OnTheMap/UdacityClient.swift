@@ -12,18 +12,11 @@ class UdacityClient : NSObject
 {
     var session = NSURLSession.sharedSession()
     
-    override init()
+    //Singleton Pattern
+    static let sharedInstance = UdacityClient()
+    
+    private override init()
     {
         super.init()
-    }
-    
-    // MARK : Singleton Pattern
-    class func sharedInstance() -> UdacityClient
-    {
-        struct Singleton
-        {
-            static var sharedInstance = UdacityClient()
-        }
-        return Singleton.sharedInstance
     }
 }

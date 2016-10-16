@@ -12,18 +12,11 @@ class FBClient : NSObject
 {
     var session = NSURLSession.sharedSession()
     
-    override init()
+    //Singleton Pattern
+    static let sharedInstance = FBClient()
+    
+    private override init()
     {
         super.init()
-    }
-    
-    // MARK : Singleton Pattern
-    class func sharedInstance() -> FBClient
-    {
-        struct Singleton
-        {
-            static var sharedInstance = FBClient()
-        }
-        return Singleton.sharedInstance
     }
 }
