@@ -14,6 +14,16 @@
 		C09AEB101DB2E6690087723C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C09AEB0E1DB2E6690087723C /* LaunchScreen.storyboard */; };
 		C09AEB1B1DB2E6690087723C /* OnTheMapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09AEB1A1DB2E6690087723C /* OnTheMapTests.swift */; };
 		C09AEB261DB2E6690087723C /* OnTheMapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09AEB251DB2E6690087723C /* OnTheMapUITests.swift */; };
+		C09AEB361DB2EADB0087723C /* StudentInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09AEB351DB2EADB0087723C /* StudentInformation.swift */; };
+		C09AEB3B1DB308940087723C /* FBConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09AEB3A1DB308940087723C /* FBConstants.swift */; };
+		C09AEB3D1DB308A80087723C /* FBClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09AEB3C1DB308A80087723C /* FBClient.swift */; };
+		C09AEB3F1DB308E10087723C /* FBConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09AEB3E1DB308E10087723C /* FBConfig.swift */; };
+		C09AEB411DB308F10087723C /* ParseConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09AEB401DB308F10087723C /* ParseConstants.swift */; };
+		C09AEB431DB308FB0087723C /* ParseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09AEB421DB308FB0087723C /* ParseClient.swift */; };
+		C09AEB451DB309060087723C /* ParseConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09AEB441DB309060087723C /* ParseConfig.swift */; };
+		C09AEB471DB309120087723C /* UdacityConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09AEB461DB309120087723C /* UdacityConstants.swift */; };
+		C09AEB491DB309270087723C /* UdacityClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09AEB481DB309270087723C /* UdacityClient.swift */; };
+		C09AEB4B1DB309390087723C /* UdacityConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09AEB4A1DB309390087723C /* UdacityConfig.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +57,16 @@
 		C09AEB211DB2E6690087723C /* OnTheMapUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OnTheMapUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C09AEB251DB2E6690087723C /* OnTheMapUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnTheMapUITests.swift; sourceTree = "<group>"; };
 		C09AEB271DB2E6690087723C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C09AEB351DB2EADB0087723C /* StudentInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentInformation.swift; sourceTree = "<group>"; };
+		C09AEB3A1DB308940087723C /* FBConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBConstants.swift; sourceTree = "<group>"; };
+		C09AEB3C1DB308A80087723C /* FBClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBClient.swift; sourceTree = "<group>"; };
+		C09AEB3E1DB308E10087723C /* FBConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBConfig.swift; sourceTree = "<group>"; };
+		C09AEB401DB308F10087723C /* ParseConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseConstants.swift; sourceTree = "<group>"; };
+		C09AEB421DB308FB0087723C /* ParseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseClient.swift; sourceTree = "<group>"; };
+		C09AEB441DB309060087723C /* ParseConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseConfig.swift; sourceTree = "<group>"; };
+		C09AEB461DB309120087723C /* UdacityConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityConstants.swift; sourceTree = "<group>"; };
+		C09AEB481DB309270087723C /* UdacityClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityClient.swift; sourceTree = "<group>"; };
+		C09AEB4A1DB309390087723C /* UdacityConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityConfig.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +117,8 @@
 		C09AEB041DB2E6680087723C /* OnTheMap */ = {
 			isa = PBXGroup;
 			children = (
+				C09AEB341DB2EABD0087723C /* Controller */,
+				C09AEB331DB2EAB60087723C /* Model */,
 				C09AEB051DB2E6680087723C /* AppDelegate.swift */,
 				C09AEB071DB2E6680087723C /* ViewController.swift */,
 				C09AEB091DB2E6690087723C /* Main.storyboard */,
@@ -123,6 +145,54 @@
 				C09AEB271DB2E6690087723C /* Info.plist */,
 			);
 			path = OnTheMapUITests;
+			sourceTree = "<group>";
+		};
+		C09AEB331DB2EAB60087723C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C09AEB391DB3085B0087723C /* Facebook */,
+				C09AEB381DB308550087723C /* Parse */,
+				C09AEB371DB3084B0087723C /* Udacity */,
+				C09AEB351DB2EADB0087723C /* StudentInformation.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		C09AEB341DB2EABD0087723C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		C09AEB371DB3084B0087723C /* Udacity */ = {
+			isa = PBXGroup;
+			children = (
+				C09AEB461DB309120087723C /* UdacityConstants.swift */,
+				C09AEB481DB309270087723C /* UdacityClient.swift */,
+				C09AEB4A1DB309390087723C /* UdacityConfig.swift */,
+			);
+			name = Udacity;
+			sourceTree = "<group>";
+		};
+		C09AEB381DB308550087723C /* Parse */ = {
+			isa = PBXGroup;
+			children = (
+				C09AEB401DB308F10087723C /* ParseConstants.swift */,
+				C09AEB421DB308FB0087723C /* ParseClient.swift */,
+				C09AEB441DB309060087723C /* ParseConfig.swift */,
+			);
+			name = Parse;
+			sourceTree = "<group>";
+		};
+		C09AEB391DB3085B0087723C /* Facebook */ = {
+			isa = PBXGroup;
+			children = (
+				C09AEB3A1DB308940087723C /* FBConstants.swift */,
+				C09AEB3C1DB308A80087723C /* FBClient.swift */,
+				C09AEB3E1DB308E10087723C /* FBConfig.swift */,
+			);
+			name = Facebook;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,6 +263,7 @@
 				TargetAttributes = {
 					C09AEB011DB2E6680087723C = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 2Z9N4E5N97;
 					};
 					C09AEB151DB2E6690087723C = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -256,8 +327,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C09AEB361DB2EADB0087723C /* StudentInformation.swift in Sources */,
+				C09AEB471DB309120087723C /* UdacityConstants.swift in Sources */,
+				C09AEB3F1DB308E10087723C /* FBConfig.swift in Sources */,
+				C09AEB491DB309270087723C /* UdacityClient.swift in Sources */,
+				C09AEB3D1DB308A80087723C /* FBClient.swift in Sources */,
+				C09AEB451DB309060087723C /* ParseConfig.swift in Sources */,
+				C09AEB3B1DB308940087723C /* FBConstants.swift in Sources */,
 				C09AEB081DB2E6680087723C /* ViewController.swift in Sources */,
 				C09AEB061DB2E6680087723C /* AppDelegate.swift in Sources */,
+				C09AEB431DB308FB0087723C /* ParseClient.swift in Sources */,
+				C09AEB411DB308F10087723C /* ParseConstants.swift in Sources */,
+				C09AEB4B1DB309390087723C /* UdacityConfig.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,10 +482,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = OnTheMap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.agrawal.OnTheMap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -412,10 +496,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = OnTheMap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.agrawal.OnTheMap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -484,6 +571,7 @@
 				C09AEB2C1DB2E6690087723C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C09AEB2D1DB2E6690087723C /* Build configuration list for PBXNativeTarget "OnTheMapTests" */ = {
 			isa = XCConfigurationList;
@@ -492,6 +580,7 @@
 				C09AEB2F1DB2E6690087723C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C09AEB301DB2E6690087723C /* Build configuration list for PBXNativeTarget "OnTheMapUITests" */ = {
 			isa = XCConfigurationList;
@@ -500,6 +589,7 @@
 				C09AEB321DB2E6690087723C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
