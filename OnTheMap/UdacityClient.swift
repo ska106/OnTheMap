@@ -12,11 +12,18 @@ class UdacityClient : NSObject
 {
     var session = NSURLSession.sharedSession()
     
-    //Singleton Pattern
+    // MARK: Singleton Pattern
     static let sharedInstance = UdacityClient()
     
     private override init()
     {
         super.init()
     }
+    
+    // MARK: GET
+    //func taskForGETMethod(method: String, parameters: [String: AnyObject], completionHandlerForGET: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask{}
+    
+    // MARK : POST
+    //func taskForPOSTMethod(method: String, parameters: [String: AnyObject], completionHandlerForPOST: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask{}
+    
 }
