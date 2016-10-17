@@ -20,11 +20,36 @@ class UdacityClient : NSObject
         super.init()
     }
     
-    // MARK : Get Udacity Session ID
-    
     // MARK : Login Udacity using username and password.
+    func loginWithCredentials (userName: String, password : String , completionHandler : (id:String? , error: NSError? ) ->Void )
+    {
+        //Create Udactiy URL
+        //let loginURL = API.createURL()
+        
+        //Create Request Payload
+        
+        //Invoke API.send()
+    }
+
+    // MARK : Logout
+    func logout (userName: String, completionHandler : (id:String? , error: NSError? ) ->Void )
+    {
+        //Create Udactiy URL
+        //let loginURL = API.createURL()
+        
+        //Create Request Payload
+        
+        //Invoke API.send()
+    }
     
     // MARK : Get Student Data
-    
-    // MARK : Logout
+    func getStudentInfo (userId : String, completionHandler : (data:NSData? , error : NSError? ) -> Void)
+    {
+        //Create Udactiy URL
+        //let loginURL = API.createURL()
+        
+        //Create Request Payload
+        
+        //Invoke API.send()
+    }
 }
