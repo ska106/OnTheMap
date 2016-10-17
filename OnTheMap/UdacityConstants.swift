@@ -8,48 +8,53 @@
 
 import Foundation
 
-extension UdacityClient {
-    
+extension UdacityClient
+{
     // MARK: Constants
     struct Constants
     {
-        // MARK: API Key
-        static let ApiKey : String = "YOUR_API_KEY_HERE"
-        
         // MARK: URLs
         static let ApiScheme = "https"
-        static let ApiHost = "api.themoviedb.org"
-        static let ApiPath = "/3"
+        static let ApiHost = "www.udacity.com"
+        static let ApiPath = "/api"
         static let AuthorizationURL : String = "https://www.themoviedb.org/authenticate/"
     }
     
     // MARK: Methods
     struct Methods
     {
-        
+        static let Session = "/session"
+        static let Users = "/users"
     }
     
-    // MARK: URL Keys
-    struct URLKeys
+    struct HeaderKeys
     {
-        static let UserID = "id"
+        static let Accept = "Accept"
+        static let ContentType = "Content-Type"
     }
     
-    // MARK: Parameter Keys
-    struct ParameterKeys
+    struct HeaderValues
     {
-      
+        static let JSON = "application/json"
     }
     
     // MARK: JSON Body Keys
     struct JSONBodyKeys
     {
-      
+        static let Udacity = "udacity"
+        static let username = "username"
+        static let password = "password"
     }
     
     // MARK: JSON Response Keys
     struct JSONResponseKeys
     {
         
+    }
+    
+    // MARK: Error Messages
+    struct Errors
+    {
+        static let FailedToParseJSON = "Failed to parse JSON Body"
     }
 }

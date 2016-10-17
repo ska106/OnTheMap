@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C002AFD41DB3EBEA001E2B05 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C002AFD31DB3EBEA001E2B05 /* LoginViewController.swift */; };
+		C002AFD71DB45345001E2B05 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C002AFD61DB45345001E2B05 /* API.swift */; };
 		C09AEB061DB2E6680087723C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09AEB051DB2E6680087723C /* AppDelegate.swift */; };
 		C09AEB081DB2E6680087723C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09AEB071DB2E6680087723C /* ViewController.swift */; };
 		C09AEB0B1DB2E6690087723C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C09AEB091DB2E6690087723C /* Main.storyboard */; };
@@ -46,6 +47,7 @@
 
 /* Begin PBXFileReference section */
 		C002AFD31DB3EBEA001E2B05 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		C002AFD61DB45345001E2B05 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		C09AEB021DB2E6680087723C /* OnTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C09AEB051DB2E6680087723C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C09AEB071DB2E6680087723C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -96,6 +98,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C002AFD51DB4531D001E2B05 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				C002AFD61DB45345001E2B05 /* API.swift */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
 		C09AEAF91DB2E6680087723C = {
 			isa = PBXGroup;
 			children = (
@@ -119,6 +129,7 @@
 		C09AEB041DB2E6680087723C /* OnTheMap */ = {
 			isa = PBXGroup;
 			children = (
+				C002AFD51DB4531D001E2B05 /* Utils */,
 				C09AEB341DB2EABD0087723C /* Controller */,
 				C09AEB331DB2EAB60087723C /* Model */,
 				C09AEB051DB2E6680087723C /* AppDelegate.swift */,
@@ -336,6 +347,7 @@
 				C09AEB491DB309270087723C /* UdacityClient.swift in Sources */,
 				C09AEB3D1DB308A80087723C /* FBClient.swift in Sources */,
 				C09AEB451DB309060087723C /* ParseConfig.swift in Sources */,
+				C002AFD71DB45345001E2B05 /* API.swift in Sources */,
 				C09AEB3B1DB308940087723C /* FBConstants.swift in Sources */,
 				C09AEB081DB2E6680087723C /* ViewController.swift in Sources */,
 				C09AEB061DB2E6680087723C /* AppDelegate.swift in Sources */,

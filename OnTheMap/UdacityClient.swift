@@ -20,10 +20,11 @@ class UdacityClient : NSObject
         super.init()
     }
     
-    // MARK: GET
-    //func taskForGETMethod(method: String, parameters: [String: AnyObject], completionHandlerForGET: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask{}
+    // MARK : Get Udacity Session ID
     
-    // MARK : POST
-    //func taskForPOSTMethod(method: String, parameters: [String: AnyObject], completionHandlerForPOST: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask{}
+    // MARK : Login Udacity using username and password.
     
+    // MARK : Get Student Data
+    
+    // MARK : Logout
 }

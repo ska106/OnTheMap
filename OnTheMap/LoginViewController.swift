@@ -31,4 +31,14 @@ class LoginViewController : UIViewController
     {
         
     }
+    
+    // MARK : Functions to call Udacity API for login.
+    
+    private func getRequestToken(){}
+
+    private func loginWithToken(requestToken : String){}
+    
+    private func getSessionId(requestToken : String){}
+    
+    private func getUserId(sessionId : String){}
 }
