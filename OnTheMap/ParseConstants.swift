@@ -42,6 +42,7 @@ extension ParseClient
     // MARK: JSON Response Key
     struct JSONResponseKey
     {
+        static let results = "results"
         static let objectId = "objectId"
         static let uniqueKey = "uniqueKey"
         static let firstName = "firstName"
@@ -58,6 +59,7 @@ extension ParseClient
     struct Errors
     {
         static let connectionError = "Connection error."
+        static let UnexpectedSystemError = "Unexpected system error has occurred."
     }
 
 }

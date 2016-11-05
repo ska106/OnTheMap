@@ -10,13 +10,13 @@ import Foundation
 
 class ParseClient : NSObject
 {
-    var session = NSURLSession.sharedSession()
-    
+    var studentLocations : [StudentInformation]
     //Singleton Pattern
     static let sharedInstance = ParseClient()
     
     private override init()
     {
+        studentLocations = [StudentInformation]()
         super.init()
     }
     
@@ -63,7 +63,7 @@ class ParseClient : NSObject
     }
     
     //MARK : Get Student Locations
-    func getStudentLcoation (completionHandler: (success: Bool,errorMessage : String)->Void)
+    func getStudentLcoation (completionHandler: (success: Bool,errorMessage : String?)->Void)
     {
         //Initialize the Request to invoke API.
         let request = NSMutableURLRequest(URL:getMethodURL(Methods.studentLocation))
@@ -72,6 +72,16 @@ class ParseClient : NSObject
             if error == nil
             {
                 //Success
+                if let results = result?.valueForKey(JSONResponseKey.results) as? [[String:AnyObject]]
+                {
+                    self.studentLocations = StudentInformation.getLocationsFromResults(results)
+                    completionHandler(success: true,errorMessage: nil)
+                }
+                else
+                {
+                    //Failure
+                    completionHandler(success: false, errorMessage : Errors.UnexpectedSystemError)
+                }
             }
             else
             {
@@ -81,7 +91,7 @@ class ParseClient : NSObject
         }
     }
     
-    //MARK : Find a student Location
+    //MARK : Find a student Location by a uniqueId - corresponding to a Student Location record.
     func findStudentLocation (uniqueKey : String, completionHandler: (success:Bool, errorMessage: String) -> Void)
     {
         //Initialize the Request to invoke API.

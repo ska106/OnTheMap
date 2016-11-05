@@ -22,15 +22,25 @@ struct StudentInformation
     var latitude : Double!
     
     //As per the rubic cube the struct must have an init method that accepts a dictionary as an argument.
-    init(arg:NSDictionary)
+    init(parseResult: [String:AnyObject])
     {
-        self.objectId = arg["objectId"] as! String
-        self.uniqueId = arg["uniqueId"] as! String
-        self.firstName = arg["firstName"] as! String
-        self.lastName = arg["lastName"] as! String
-        self.mapString = arg["mapString"] as! String
-        self.mediaURL = arg["mediaURL"] as! String
-        self.longitude = arg["longitude"] as! Double
-        self.latitude = arg["latitude"] as! Double
+        self.objectId = parseResult["objectId"] as! String
+        self.uniqueId = parseResult["uniqueId"] as! String
+        self.firstName = parseResult["firstName"] as! String
+        self.lastName = parseResult["lastName"] as! String
+        self.mapString = parseResult["mapString"] as! String
+        self.mediaURL = parseResult["mediaURL"] as! String
+        self.longitude = parseResult["longitude"] as! Double
+        self.latitude = parseResult["latitude"] as! Double
+    }
+    
+    static func getLocationsFromResults(results: [[String:AnyObject]]) -> [StudentInformation]
+    {
+        var returnLocations = [StudentInformation]()
+        for result in results
+        {
+            returnLocations.append(StudentInformation(parseResult: result))
+        }
+        return returnLocations
     }
 }
