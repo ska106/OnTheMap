@@ -29,6 +29,8 @@ extension ParseClient
     {
         static let Accept = "Accept"
         static let ContentType = "Content-Type"
+        static let ApplicationId = "X-Parse-Application-Id"
+        static let RestAPIKey = "X-Parse-REST-API-Key"
     }
     
     struct HeaderValues
