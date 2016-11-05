@@ -89,11 +89,24 @@ class UdacityClient : NSObject
                      
                         completionHandler(success: true,errorMessage: nil)
                     }
-                    
+                    else
+                    {
+                        //Failure when not able to get the user id in the response.
+                        completionHandler(success:false,errorMessage: Errors.loginError)
+                    }
+                }
+                else
+                {
+                    //Failure when not able to get a key in the response.
+                    completionHandler(success:false,errorMessage: Errors.loginError)
                 }
             }
+            else
+            {
+                //Failure becuase not able to connect to the API
+                completionHandler(success:false,errorMessage: Errors.connectionError)
+            }
         })
-        
     }
 
     // MARK : Logout
