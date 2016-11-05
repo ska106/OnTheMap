@@ -10,9 +10,9 @@ import Foundation
 
 class UdacityClient : NSObject
 {
-    var userId: String
-    var userFirstName: String
-    var userLastName: String
+    var userId: String = ""
+    var userFirstName: String = ""
+    var userLastName: String = ""
     
     var session = NSURLSession.sharedSession()
     
@@ -21,9 +21,7 @@ class UdacityClient : NSObject
     
     private override init()
     {
-        self.userId = ""
-        self.userFirstName = ""
-        self.userLastName = ""
+        super.init()
     }
     
     // MARK : Prepare the HTTP header for the request.
@@ -133,9 +131,34 @@ class UdacityClient : NSObject
     func logout (userName: String, completionHandler : (success:Bool,  errorMessage:String? ) ->Void )
     {
         //Initialize the Request to invoke API.
-        var request = NSMutableURLRequest(URL:getMethodURL(Methods.Session))
-        request.HTTPMethod = "POST"
-        request = setHeaders(request)
+        let request = NSMutableURLRequest(URL:getMethodURL(Methods.Session))
+        request.HTTPMethod = "DELETE"
+        var xsrfCookie:NSHTTPCookie? = nil
+        let sharedCookieStorage = NSHTTPCookieStorage.sharedHTTPCookieStorage()
+        for cookie in sharedCookieStorage.cookies!
+        {
+            if cookie.name == "XSRF-TOKEN"
+            {
+                xsrfCookie = cookie
+            }
+            if let xsrfCookie = xsrfCookie
+            {
+                request.setValue(xsrfCookie.value, forHTTPHeaderField: "X-XSRF-TOKEN")
+            }
+        }
+        makeTaskCall(request) { (result, error) in
+            if error == nil
+            {
+                //Success
+                completionHandler(success: true, errorMessage: nil)
+                
+            }
+            else
+            {
+                completionHandler(success:false,errorMessage: Errors.connectionError)
+            }
+        }
+
    
     }
     
