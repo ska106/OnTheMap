@@ -35,14 +35,7 @@ extension ParseClient
     {
         static let JSON = "application/json"
     }
-    
-    // MARK: JSON Body Keys
-    struct JSONBodyKeys
-    {
-        static let udacity = "udacity"
-        static let username = "username"
-        static let password = "password"
-    }
+
     
     // MARK: JSON Response Key
     struct JSONResponseKey
@@ -62,7 +55,6 @@ extension ParseClient
     // MARK: Error Messages
     struct Errors
     {
-        static let loginError = "Udacity login has failed."
         static let connectionError = "Connection error."
     }
 

@@ -17,9 +17,6 @@
 		C09AEB1B1DB2E6690087723C /* OnTheMapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09AEB1A1DB2E6690087723C /* OnTheMapTests.swift */; };
 		C09AEB261DB2E6690087723C /* OnTheMapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09AEB251DB2E6690087723C /* OnTheMapUITests.swift */; };
 		C09AEB361DB2EADB0087723C /* StudentInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09AEB351DB2EADB0087723C /* StudentInformation.swift */; };
-		C09AEB3B1DB308940087723C /* FBConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09AEB3A1DB308940087723C /* FBConstants.swift */; };
-		C09AEB3D1DB308A80087723C /* FBClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09AEB3C1DB308A80087723C /* FBClient.swift */; };
-		C09AEB3F1DB308E10087723C /* FBConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09AEB3E1DB308E10087723C /* FBConfig.swift */; };
 		C09AEB411DB308F10087723C /* ParseConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09AEB401DB308F10087723C /* ParseConstants.swift */; };
 		C09AEB431DB308FB0087723C /* ParseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09AEB421DB308FB0087723C /* ParseClient.swift */; };
 		C09AEB471DB309120087723C /* UdacityConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09AEB461DB309120087723C /* UdacityConstants.swift */; };
@@ -60,9 +57,6 @@
 		C09AEB251DB2E6690087723C /* OnTheMapUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnTheMapUITests.swift; sourceTree = "<group>"; };
 		C09AEB271DB2E6690087723C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C09AEB351DB2EADB0087723C /* StudentInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentInformation.swift; sourceTree = "<group>"; };
-		C09AEB3A1DB308940087723C /* FBConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBConstants.swift; sourceTree = "<group>"; };
-		C09AEB3C1DB308A80087723C /* FBClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBClient.swift; sourceTree = "<group>"; };
-		C09AEB3E1DB308E10087723C /* FBConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBConfig.swift; sourceTree = "<group>"; };
 		C09AEB401DB308F10087723C /* ParseConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseConstants.swift; sourceTree = "<group>"; };
 		C09AEB421DB308FB0087723C /* ParseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseClient.swift; sourceTree = "<group>"; };
 		C09AEB461DB309120087723C /* UdacityConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityConstants.swift; sourceTree = "<group>"; };
@@ -159,7 +153,6 @@
 		C09AEB331DB2EAB60087723C /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				C09AEB391DB3085B0087723C /* Facebook */,
 				C09AEB381DB308550087723C /* Parse */,
 				C09AEB371DB3084B0087723C /* Udacity */,
 				C09AEB351DB2EADB0087723C /* StudentInformation.swift */,
@@ -191,16 +184,6 @@
 				C09AEB421DB308FB0087723C /* ParseClient.swift */,
 			);
 			name = Parse;
-			sourceTree = "<group>";
-		};
-		C09AEB391DB3085B0087723C /* Facebook */ = {
-			isa = PBXGroup;
-			children = (
-				C09AEB3A1DB308940087723C /* FBConstants.swift */,
-				C09AEB3C1DB308A80087723C /* FBClient.swift */,
-				C09AEB3E1DB308E10087723C /* FBConfig.swift */,
-			);
-			name = Facebook;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -337,10 +320,7 @@
 			files = (
 				C09AEB361DB2EADB0087723C /* StudentInformation.swift in Sources */,
 				C09AEB471DB309120087723C /* UdacityConstants.swift in Sources */,
-				C09AEB3F1DB308E10087723C /* FBConfig.swift in Sources */,
 				C09AEB491DB309270087723C /* UdacityClient.swift in Sources */,
-				C09AEB3D1DB308A80087723C /* FBClient.swift in Sources */,
-				C09AEB3B1DB308940087723C /* FBConstants.swift in Sources */,
 				C09AEB081DB2E6680087723C /* ViewController.swift in Sources */,
 				C09AEB061DB2E6680087723C /* AppDelegate.swift in Sources */,
 				C000B4161DCE4AFC00C0150F /* Converter.swift in Sources */,
