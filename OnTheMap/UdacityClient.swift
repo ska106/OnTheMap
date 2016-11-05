@@ -91,8 +91,20 @@ class UdacityClient : NSObject
                     if let userId = account.valueForKey(JSONResponseKey.key) as? String
                     {
                         self.userId = userId
+                        
                         // Get User Info based on the user ID above.
-                     
+                        self.getStudentInfo(userId, completionHandler: { (success, errorMessage) in
+                            if (success)
+                            {
+                                print ("\n User Full Name =  \(self.userFirstName) \(self.userLastName)")
+                            }
+                            else
+                            {
+                                print("\n")
+                                print (error)
+                            }
+                            
+                        })
                         completionHandler(success: true,errorMessage: nil)
                     }
                     else
