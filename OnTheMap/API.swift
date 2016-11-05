@@ -12,6 +12,7 @@ class API
 {
     private let session : NSURLSession
     
+    // MARK : All supported HTTP methods.
     enum RestHTTPMethod:String
     {
         case GET
