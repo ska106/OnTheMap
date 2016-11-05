@@ -8,48 +8,62 @@
 
 import Foundation
 
-extension ParseClient {
-    
+extension ParseClient
+{
     // MARK: Constants
-    struct Constants
+    struct BaseURL
     {
-        // MARK: API Key
-        static let ApiKey : String = "YOUR_API_KEY_HERE"
-        
-        // MARK: URLs
-        static let ApiScheme = "https"
-        static let ApiHost = "api.themoviedb.org"
-        static let ApiPath = "/3"
-        static let AuthorizationURL : String = "https://www.themoviedb.org/authenticate/"
+        static let APIKey : String = "QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY"
+        static let APIID : String = "QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr"
+        // Old URL : https://api.parse.com/1/classes
+        static let BaseURL : String = "http://parse.udacity.com/parse/classes"
     }
     
     // MARK: Methods
     struct Methods
     {
-        
+        static let studentLocation = "/StudentLocation"
+    }
+ 
+    struct HeaderKeys
+    {
+        static let Accept = "Accept"
+        static let ContentType = "Content-Type"
     }
     
-    // MARK: URL Keys
-    struct URLKeys
+    struct HeaderValues
     {
-        static let UserID = "id"
-    }
-    
-    // MARK: Parameter Keys
-    struct ParameterKeys
-    {
-        
+        static let JSON = "application/json"
     }
     
     // MARK: JSON Body Keys
     struct JSONBodyKeys
     {
-        
+        static let udacity = "udacity"
+        static let username = "username"
+        static let password = "password"
     }
     
-    // MARK: JSON Response Keys
-    struct JSONResponseKeys
+    // MARK: JSON Response Key
+    struct JSONResponseKey
     {
-        
+        static let objectId = "objectId"
+        static let uniqueKey = "uniqueKey"
+        static let firstName = "firstName"
+        static let lastName = "lastName"
+        static let mapString = "mapString"
+        static let mediaURL = "mediaURL"
+        static let latitude = "latitude"
+        static let longitude = "longitude"
+        static let createdAt = "createdAt"
+        static let updatedAt = "updatedAt"
     }
+    
+    // MARK: Error Messages
+    struct Errors
+    {
+        static let loginError = "Udacity login has failed."
+        static let connectionError = "Connection error."
+    }
+
 }

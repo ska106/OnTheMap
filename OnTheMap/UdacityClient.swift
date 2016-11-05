@@ -127,7 +127,7 @@ class UdacityClient : NSObject
         })
     }
 
-    // MARK : Logout
+    // MARK : Udacity Logout
     func logout (userName: String, completionHandler : (success:Bool,  errorMessage:String? ) ->Void )
     {
         //Initialize the Request to invoke API.
@@ -158,8 +158,6 @@ class UdacityClient : NSObject
                 completionHandler(success:false,errorMessage: Errors.connectionError)
             }
         }
-
-   
     }
     
     // MARK : Get Student Data
