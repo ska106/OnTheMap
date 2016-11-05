@@ -31,9 +31,16 @@ class ParseClient : NSObject
     }
     
     // MARK : Based on the name of the resource, construct the API URL to be invoked.
-    func getMethodURL (resourceName: String) -> NSURL
+    func getMethodURL(resourceName: String) -> NSURL
     {
         return NSURL(fileURLWithPath: BaseURL.API + resourceName);
+    }
+    
+    
+    // MARK : Method overloaded :: Based on the name of the resource, construct the API URL to be invoked.
+    func getMethodURL (resourceName: String, id:String) -> NSURL
+    {
+        return NSURL(fileURLWithPath: BaseURL.API + resourceName + "?where=%7B%22uniqueKey%22%3A%22" + id + "%22%7D");
     }
     
     // MARK : Function to initiate the API call via. Task.
@@ -92,15 +99,25 @@ class ParseClient : NSObject
     }
     
     //MARK : Find a student Location by a uniqueId - corresponding to a Student Location record.
-    func findStudentLocation (uniqueKey : String, completionHandler: (success:Bool, errorMessage: String) -> Void)
+    func findStudentLocation (uniqueKey : String, completionHandler: (success:Bool, errorMessage: String?) -> Void)
     {
         //Initialize the Request to invoke API.
-        let request = NSMutableURLRequest(URL:getMethodURL(Methods.studentLocation))
+        let request = NSMutableURLRequest(URL:getMethodURL(Methods.studentLocation,id: uniqueKey))
         //request.HTTPMethod = "GET"
         makeTaskCall(request) { (result, error) in
             if error == nil
             {
                 //Success
+                if let results = result?.valueForKey(JSONResponseKey.results) as? [[String:AnyObject]]
+                {
+                    self.studentLocations = StudentInformation.getLocationsFromResults(results)
+                    completionHandler(success: true,errorMessage: nil)
+                }
+                else
+                {
+                    //Failure
+                    completionHandler(success: false, errorMessage : Errors.UnexpectedSystemError)
+                }
             }
             else
             {
@@ -111,7 +128,7 @@ class ParseClient : NSObject
     }
     
     //MARK : Post a Student Location
-    func postStudentLocation (studentData: [String:AnyObject], completionHandler:(success: Bool, errorMessage  : String) -> Void)
+    func postStudentLocation (studentData: [String:AnyObject], completionHandler:(success: Bool, errorMessage  : String?) -> Void)
     {
         //Initialize the Request to invoke API.
         let request = NSMutableURLRequest(URL:getMethodURL(Methods.studentLocation))
@@ -130,7 +147,7 @@ class ParseClient : NSObject
     }
     
     //MARK : Update a Student Location
-    func updateStudentLocation (objectId: String, studentData : [String:AnyObject], completionHandler:(success: Bool, errorMessage: String) -> Void)
+    func updateStudentLocation (objectId: String, studentData : [String:AnyObject], completionHandler:(success: Bool, errorMessage: String?) -> Void)
     {
         //Initialize the Request to invoke API.
         let request = NSMutableURLRequest(URL:getMethodURL(Methods.studentLocation))
