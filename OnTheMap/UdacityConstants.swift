@@ -51,6 +51,11 @@ extension UdacityClient
         static let session = "session"
         static let id = "id"
         static let expiration = "expiration"
+        
+        static let user = "user"
+        static let lastName = "last_name"
+        static let firstName = "first_name"
+        
         static let status = "status"
         static let error = "error"
         

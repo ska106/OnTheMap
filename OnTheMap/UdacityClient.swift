@@ -11,6 +11,8 @@ import Foundation
 class UdacityClient : NSObject
 {
     var userId: String
+    var userFirstName: String
+    var userLastName: String
     
     var session = NSURLSession.sharedSession()
     
@@ -19,7 +21,9 @@ class UdacityClient : NSObject
     
     private override init()
     {
-        super.init()
+        self.userId = ""
+        self.userFirstName = ""
+        self.userLastName = ""
     }
     
     // MARK : Prepare the HTTP header for the request.
@@ -80,8 +84,10 @@ class UdacityClient : NSObject
             if error == nil
             {
                 //Success
+                // Step 1. Get the Account Node.
                 if let account = result!.valueForKey(JSONResponseKey.account) as? NSDictionary
                 {
+                    //Step 2. Parse out the Key Node (aka user-ID)
                     if let userId = account.valueForKey(JSONResponseKey.key) as? String
                     {
                         self.userId = userId
@@ -103,28 +109,54 @@ class UdacityClient : NSObject
             }
             else
             {
-                //Failure becuase not able to connect to the API
+                //Failure because not able to connect to the API
                 completionHandler(success:false,errorMessage: Errors.connectionError)
             }
         })
     }
 
     // MARK : Logout
-    func logout (userName: String, completionHandler : (id:String? , error: NSError? ) ->Void )
+    func logout (userName: String, completionHandler : (success:Bool,  errorMessage:String? ) ->Void )
     {
-        //Create Udactiy URL
-        //let loginURL = API.createURL()
-        
-        //Create Request Payload
-        
-        //Invoke API.send()
+        //Initialize the Request to invoke API.
+        var request = NSMutableURLRequest(URL:getMethodURL(Methods.Session))
+        request.HTTPMethod = "POST"
+        request = setHeaders(request)
+   
     }
     
     // MARK : Get Student Data
-    func getStudentInfo (userId : String, completionHandler : (data:NSData? , error : NSError? ) -> Void)
+    func getStudentInfo (userId : String, completionHandler : (success:Bool,  errorMessage:String? ) ->Void)
     {
-        //Create Request Payload
+        //Initialize the Request to invoke API.
+        var request = NSMutableURLRequest(URL:getMethodURL(Methods.Users+"/"+userId))
+        request.HTTPMethod = "GET"
+        request = setHeaders(request)
         
-        //Invoke API.send()
+        makeTaskCall(request) { (result, error) in
+            if error == nil
+            {
+                //Success
+                //Step 1. Get the user node.
+                if let user = result!.valueForKey(JSONResponseKey.user) as? NSDictionary
+                {
+                    //Step 2. Parse out the first name of the user object.
+                    if let fName = user.valueForKey(JSONResponseKey.firstName) as? String
+                    {
+                        self.userFirstName = fName
+                    }
+                    //Step 3. Parse out the last name of the user object.
+                    if let lName = user.valueForKey(JSONResponseKey.lastName) as? String
+                    {
+                        self.userLastName = lName
+                    }
+                    completionHandler(success: true, errorMessage: nil)
+                }
+            }
+            else
+            {
+                completionHandler(success:false,errorMessage: Errors.connectionError)
+            }
+         }
     }
 }
