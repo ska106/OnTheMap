@@ -53,6 +53,8 @@ class UdacityClient : NSObject
             {
                 //Success
                 let newData = data?.subdataWithRange(NSMakeRange(5, (data?.length)! - 5)) //Subset response data - based on Udacity security standards.
+                // Convert the JSON to AnyObject so that it can be mapped to the completionHandler here.
+                Converter.parseJSONToAnyObject(newData!, completionHandler: completionHandler)
                 completionHandler(result:newData , error: nil)
             }
             else
