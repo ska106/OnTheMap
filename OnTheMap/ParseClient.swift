@@ -48,10 +48,9 @@ class ParseClient : NSObject
             if error == nil
             {
                 //Success
-                let newData = data?.subdataWithRange(NSMakeRange(5, (data?.length)! - 5)) //Subset response data - based on Udacity security standards.
                 // Convert the JSON to AnyObject so that it can be mapped to the completionHandler here.
-                Converter.parseJSONToAnyObject(newData!, completionHandler: completionHandler)
-                completionHandler(result:newData , error: nil)
+                Converter.parseJSONToAnyObject(data!, completionHandler: completionHandler)
+                completionHandler(result:data , error: nil)
             }
             else
             {
@@ -63,12 +62,79 @@ class ParseClient : NSObject
         return task
     }
     
+    //MARK : Get Student Locations
+    func getStudentLcoation (completionHandler: (success: Bool,errorMessage : String)->Void)
+    {
+        //Initialize the Request to invoke API.
+        let request = NSMutableURLRequest(URL:getMethodURL(Methods.studentLocation))
+        //request.HTTPMethod = "GET"
+        makeTaskCall(request) { (result, error) in
+            if error == nil
+            {
+                //Success
+            }
+            else
+            {
+                //Failure
+                completionHandler(success:false, errorMessage: Errors.connectionError)
+            }
+        }
+    }
     
+    //MARK : Find a student Location
+    func findStudentLocation (uniqueKey : String, completionHandler: (success:Bool, errorMessage: String) -> Void)
+    {
+        //Initialize the Request to invoke API.
+        let request = NSMutableURLRequest(URL:getMethodURL(Methods.studentLocation))
+        //request.HTTPMethod = "GET"
+        makeTaskCall(request) { (result, error) in
+            if error == nil
+            {
+                //Success
+            }
+            else
+            {
+                //Failure
+                completionHandler(success:false, errorMessage: Errors.connectionError)
+            }
+        }
+    }
     
+    //MARK : Post a Student Location
+    func postStudentLocation (studentData: [String:AnyObject], completionHandler:(success: Bool, errorMessage  : String) -> Void)
+    {
+        //Initialize the Request to invoke API.
+        let request = NSMutableURLRequest(URL:getMethodURL(Methods.studentLocation))
+        request.HTTPMethod = "POST"
+        makeTaskCall(request) { (result, error) in
+            if error == nil
+            {
+                //Success
+            }
+            else
+            {
+                //Failure
+                completionHandler(success:false, errorMessage: Errors.connectionError)
+            }
+        }
+    }
     
-    // MARK: GET
-    //func taskForGETMethod(method: String, parameters: [String: AnyObject], completionHandlerForGET: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask{}
-    
-    // MARK : POST
-    //func taskForPOSTMethod(method: String, parameters: [String: AnyObject], completionHandlerForPOST: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask{}
+    //MARK : Update a Student Location
+    func updateStudentLocation (objectId: String, studentData : [String:AnyObject], completionHandler:(success: Bool, errorMessage: String) -> Void)
+    {
+        //Initialize the Request to invoke API.
+        let request = NSMutableURLRequest(URL:getMethodURL(Methods.studentLocation))
+        request.HTTPMethod = "PUT"
+        makeTaskCall(request) { (result, error) in
+            if error == nil
+            {
+                //Success
+            }
+            else
+            {
+                //Failure
+                completionHandler(success:false, errorMessage: Errors.connectionError)
+            }
+        }
+    }
 }
