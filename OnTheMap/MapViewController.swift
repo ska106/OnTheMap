@@ -26,52 +26,66 @@ class MapViewController : UIViewController, MKMapViewDelegate
     
     @IBOutlet weak var mapview: MKMapView!
     
-    override func prefersStatusBarHidden() -> Bool
-    {
-        return true     // status bar could be hidden
-    }
+    var parseClient : ParseClient!
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        // The "locations" array is an array of dictionary objects that are similar to the JSON
-        // data that you can download from parse.
-        let locations = nil //hardCodedLocationData()
         
-        // We will create an MKPointAnnotation for each dictionary in "locations". The
-        // point annotations will be stored in this array, and then provided to the map view.
-        var annotations = [MKPointAnnotation]()
+        //Get the singleton instances of the API clients.
+        parseClient = ParseClient.sharedInstance
         
-        // The "locations" array is loaded with the sample data below. We are using the dictionaries
-        // to create map annotations. This would be more stylish if the dictionaries were being
-        // used to create custom structs. Perhaps StudentLocation structs.
-        
-        for dictionary in locations {
+        parseClient.getStudentLocation() { success, errorMessage in
             
-            // Notice that the float values are being used to create CLLocationDegree values.
-            // This is a version of the Double type.
-            let lat = CLLocationDegrees(dictionary["latitude"] as! Double)
-            let long = CLLocationDegrees(dictionary["longitude"] as! Double)
+            // We will create an MKPointAnnotation for each dictionary in "locations". The
+            // point annotations will be stored in this array, and then provided to the map view.
+            var annotations = [MKPointAnnotation]()
+          
+            if success
+            {
+                //On Success
+                
+                // The "studentLocations" (from ParseClient) array is loaded with the needed data to be displayed on the map. We are using the dictionaries
+                // to create map annotations.
+                for location in self.parseClient.studentLocations
+                {
+                    //Assign the co-ordinates.
+                    let lat = CLLocationDegrees(location.latitude)
+                    let long = CLLocationDegrees(location.longitude)
+                    
+                    let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
+                    
+                    let annotation = MKPointAnnotation()
+                    annotation.title = "\(location.firstName) \(location.lastName)"
+                    annotation.subtitle = location.mediaURL
+                    annotation.coordinate = coordinate
+                    
+                    annotations.append(annotation)
+                }
+            }
+            else
+            {
+                //Failure
+                print("Error has occurred when invoking the ParseClient to fetch StudentLocations.")
+                //Ref: http://stackoverflow.com/questions/24022479/how-would-i-create-a-uialertview-in-swift
+                let alert = UIAlertController(title: "Error", message: errorMessage, preferredStyle: UIAlertControllerStyle.Alert)
+                let dismissAction = UIAlertAction(title: "OK", style: .Default)
+                { (action) in
+                }
+                
+                alert.addAction(dismissAction)
+                dispatch_async(dispatch_get_main_queue())
+                {
+                    self.presentViewController(alert, animated: true, completion: nil)
+                }
+            }
             
-            // The lat and long are used to create a CLLocationCoordinates2D instance.
-            let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
-            
-            let first = dictionary["firstName"] as! String
-            let last = dictionary["lastName"] as! String
-            let mediaURL = dictionary["mediaURL"] as! String
-            
-            // Here we create the annotation and set its coordiate, title, and subtitle properties
-            let annotation = MKPointAnnotation()
-            annotation.coordinate = coordinate
-            annotation.title = "\(first) \(last)"
-            annotation.subtitle = mediaURL
-            
-            // Finally we place the annotation in an array of annotations.
-            annotations.append(annotation)
+            dispatch_async(dispatch_get_main_queue())
+            {
+                self.mapview.addAnnotations(annotations)
+                self.mapview.alpha = 1.0
+            }
         }
-        
-        // When the array is complete, we add the annotations to the map.
-        self.mapView.addAnnotations(annotations)
     }
    
     // MARK: - MKMapViewDelegate
