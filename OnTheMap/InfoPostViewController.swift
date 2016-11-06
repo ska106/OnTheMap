@@ -9,7 +9,21 @@
 import Foundation
 import UIKit
 
-class InfoPostViewController
+class InfoPostViewController:UIViewController
 {
+    var parseClient : ParseClient!
+    
+    override func viewDidLoad()
+    {
+        super.viewDidLoad()
+        
+        //Get the singleton instances of the API clients.
+        parseClient = ParseClient.sharedInstance
+    }
+    
+    override func viewWillAppear(animated: Bool)
+    {
+        super.viewWillAppear(animated)
+    }
     
 }
