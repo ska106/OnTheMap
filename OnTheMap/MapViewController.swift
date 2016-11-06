@@ -24,6 +24,12 @@ import MapKit
 class MapViewController : UIViewController, MKMapViewDelegate
 {
     
+    @IBOutlet weak var mapview: MKMapView!
+    
+    override func prefersStatusBarHidden() -> Bool
+    {
+        return true     // status bar could be hidden
+    }
     
     override func viewDidLoad()
     {
