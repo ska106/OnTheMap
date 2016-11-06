@@ -43,6 +43,13 @@ class ParseClient : NSObject
         return NSURL(fileURLWithPath: BaseURL.API + resourceName + "?where=%7B%22uniqueKey%22%3A%22" + id + "%22%7D");
     }
     
+    // MARK : Based on the name of the resource, construct the API URL to be invoked.
+    func getMethodURLForPut (resourceName: String, id:String) -> NSURL
+    {
+        return NSURL(fileURLWithPath: BaseURL.API + resourceName + "/" + id);
+    }
+    
+    
     // MARK : Function to initiate the API call via. Task.
     func makeTaskCall (request:NSURLRequest , completionHandler : (result : AnyObject? , error: NSError?) -> Void) -> NSURLSessionTask
     {
@@ -133,15 +140,17 @@ class ParseClient : NSObject
         //Initialize the Request to invoke API.
         let request = NSMutableURLRequest(URL:getMethodURL(Methods.studentLocation))
         request.HTTPMethod = "POST"
+        request.HTTPBody = Converter.toNSData(studentData)
         makeTaskCall(request) { (result, error) in
             if error == nil
             {
                 //Success
+                completionHandler(success: true, errorMessage: nil)
             }
             else
             {
                 //Failure
-                completionHandler(success:false, errorMessage: Errors.connectionError)
+                completionHandler(success:false, errorMessage: Errors.UnexpectedSystemError)
             }
         }
     }
@@ -150,17 +159,19 @@ class ParseClient : NSObject
     func updateStudentLocation (objectId: String, studentData : [String:AnyObject], completionHandler:(success: Bool, errorMessage: String?) -> Void)
     {
         //Initialize the Request to invoke API.
-        let request = NSMutableURLRequest(URL:getMethodURL(Methods.studentLocation))
+        let request = NSMutableURLRequest(URL:getMethodURLForPut(Methods.studentLocation, id: objectId))
         request.HTTPMethod = "PUT"
+        request.HTTPBody = Converter.toNSData(studentData)
         makeTaskCall(request) { (result, error) in
             if error == nil
             {
                 //Success
+                completionHandler(success: true, errorMessage: nil)
             }
             else
             {
                 //Failure
-                completionHandler(success:false, errorMessage: Errors.connectionError)
+                completionHandler(success:false, errorMessage: Errors.UnexpectedSystemError)
             }
         }
     }
