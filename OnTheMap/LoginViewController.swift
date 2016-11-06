@@ -24,6 +24,8 @@ class LoginViewController : UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        //Get the singleton instances of the API clients.
         udClient = UdacityClient.sharedInstance
     }
     
@@ -43,9 +45,9 @@ class LoginViewController : UIViewController
             else
             {
                 //TODO: Stay on the same page and display error message on the login page.
-                if error == UdacityClient.Errors.loginError
+                if errorMessage == UdacityClient.Errors.loginError
                 {
-                    
+                    print (errorMessage)
                 }
                 
             }
