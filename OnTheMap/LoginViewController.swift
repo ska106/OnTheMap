@@ -27,9 +27,30 @@ class LoginViewController : UIViewController
         udClient = UdacityClient.sharedInstance
     }
     
+    override func viewWillAppear(animated: Bool)
+    {
+        super.viewWillAppear(animated)
+        self.password.text = ""
+    }
+    
     @IBAction func loginUdacity(sender: AnyObject)
     {
-        
+        udClient.loginWithCredentials(email.text!, password: password.text!) { (success, errorMessage) in
+            if (success)
+            {
+                //TODO : Move to the next Tab
+            }
+            else
+            {
+                //TODO: Stay on the same page and display error message on the login page.
+                if error == UdacityClient.Errors.loginError
+                {
+                    
+                }
+                
+            }
+            
+        }
     }
     
     // MARK : Functions to call Udacity API for login.
