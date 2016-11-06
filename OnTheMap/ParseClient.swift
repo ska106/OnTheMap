@@ -77,7 +77,7 @@ class ParseClient : NSObject
     }
     
     //MARK : Get Student Locations
-    func getStudentLcoation (completionHandler: (success: Bool,errorMessage : String?)->Void)
+    func getStudentLocation (completionHandler: (success: Bool,errorMessage : String?)->Void)
     {
         //Initialize the Request to invoke API.
         let request = NSMutableURLRequest(URL:getMethodURL(Methods.studentLocation))
