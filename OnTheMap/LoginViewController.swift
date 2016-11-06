@@ -40,7 +40,9 @@ class LoginViewController : UIViewController
         udClient.loginWithCredentials(email.text!, password: password.text!) { (success, errorMessage) in
             if (success)
             {
-                //TODO : Move to the next Tab
+                //Move to  - OnTheMapTabBarContoller
+                let controller = self.storyboard!.instantiateViewControllerWithIdentifier("OnTheMapTabBarController") as! UITabBarController
+                self.presentViewController(controller, animated: true, completion: nil)
             }
             else
             {
@@ -49,19 +51,8 @@ class LoginViewController : UIViewController
                 {
                     print (errorMessage)
                 }
-                
             }
             
         }
     }
-    
-    // MARK : Functions to call Udacity API for login.
-    
-    private func getRequestToken(){}
-
-    private func loginWithToken(requestToken : String){}
-    
-    private func getSessionId(requestToken : String){}
-    
-    private func getUserId(sessionId : String){}
 }
