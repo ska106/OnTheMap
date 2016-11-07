@@ -271,6 +271,7 @@
                         <outlet property="email" destination="lji-yw-TZc" id="65M-nd-49E"/>
                         <outlet property="password" destination="A5o-Te-etC" id="D7c-Es-p6s"/>
                         <outlet property="udacityLoginButton" destination="5oO-gF-wEu" id="3fv-wG-xev"/>
+                        <segue destination="qtc-cu-Xh6" kind="show" identifier="ToTabController" id="eok-gi-J0n"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
