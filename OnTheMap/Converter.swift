@@ -27,20 +27,18 @@ class Converter
     }
     
     //MARK : This method will convert the JSON response to a usable AnyObject.
-    //       REF : http://stackoverflow.com/questions/24671249/parse-json-in-swift-anyobject-type
     static func parseJSONToAnyObject(response: NSData, completionHandler: (result:AnyObject!, error:NSError?)-> Void)
     {
-        var localError:NSError? = nil
-        let parsedResponse: AnyObject? = NSJSONSerialization.JSONObjectWithData(response, options: NSJSONReadingOptions.AllowFragments, error: &localError)
-        if let error = localError
+        var parsedResponse:AnyObject! = nil
+        do
+        {
+            parsedResponse = try NSJSONSerialization.JSONObjectWithData(response, options: NSJSONReadingOptions.AllowFragments)
+            completionHandler(result: parsedResponse, error: nil)
+        }
+        catch let error as NSError
         {
             //Failure has occurred, don't return any results.
             completionHandler(result: nil, error: error)
-        }
-        else
-        {
-            //Success
-            completionHandler(result: parsedResponse, error: nil)
         }
     }
 }
