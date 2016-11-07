@@ -39,7 +39,8 @@ class UdacityClient : NSObject
     }
     
     // MARK : Function to initiate the API call via. Task.
-    func makeTaskCall (request:NSURLRequest , completionHandler : (result : AnyObject? , error: NSError?) -> Void) -> NSURLSessionTask
+    func makeTaskCall (request:NSURLRequest , completionHandler : (result : AnyObject? , error: NSError?) -> Void)
+        // ->NSURLSessionTask
     {
         let session = NSURLSession.sharedSession()
         
@@ -62,11 +63,11 @@ class UdacityClient : NSObject
             }
         }
         task.resume()
-        return task
+        //return task
     }
     
     // MARK : Login Udacity using username and password.
-    func loginWithCredentials (userName: String, password : String , completionHandler : (success:Bool,  errorMessage:String? ) ->Void )
+    func loginWithCredentials (userName: String, password : String , completionHandlerForLogin : (success:Bool,  errorMessage:String? ) ->Void )
     {
         print(">>> loginWithCredentials")
         //Create Request Payload
@@ -98,33 +99,32 @@ class UdacityClient : NSObject
                             if (success)
                             {
                                 print ("\n User Full Name =  \(self.userFirstName) \(self.userLastName)")
-                                completionHandler(success: true, errorMessage: nil)
+                                completionHandlerForLogin(success: true, errorMessage: nil)
                             }
                             else
                             {
                                 print("\n")
                                 print (error)
-                                completionHandler(success: false, errorMessage: Errors.connectionError)
+                                completionHandlerForLogin(success: false, errorMessage: Errors.connectionError)
                             }
                         })
-                        completionHandler(success: true,errorMessage: nil)
                     }
                     else
                     {
                         //Failure when not able to get the user id in the response.
-                        completionHandler(success:false,errorMessage: Errors.loginError)
+                        completionHandlerForLogin(success:false,errorMessage: Errors.loginError)
                     }
                 }
                 else
                 {
                     //Failure when not able to get a key in the response.
-                    completionHandler(success:false,errorMessage: Errors.loginError)
+                    completionHandlerForLogin(success:false,errorMessage: Errors.loginError)
                 }
             }
             else
             {
                 //Failure because not able to connect to the API
-                completionHandler(success:false,errorMessage: Errors.connectionError)
+                completionHandlerForLogin(success:false,errorMessage: Errors.connectionError)
             }
         })
     }
