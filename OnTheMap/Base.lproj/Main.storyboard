@@ -9,7 +9,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="hn6-hH-OSx">
             <objects>
-                <tabBarController id="qtc-cu-Xh6" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="OnTheMapTabBarContoller" id="qtc-cu-Xh6" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="v6n-3l-Fje">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -42,10 +42,10 @@
             </objects>
             <point key="canvasLocation" x="1000" y="1479"/>
         </scene>
-        <!--Item-->
+        <!--Map-->
         <scene sceneID="pFF-qU-hxy">
             <objects>
-                <viewController id="xyb-WZ-0FE" customClass="MapViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="xyb-WZ-0FE" userLabel="Map" customClass="MapViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="JYE-Dv-Wqm"/>
                         <viewControllerLayoutGuide type="bottom" id="W33-gI-L6i"/>
@@ -89,10 +89,10 @@
             </objects>
             <point key="canvasLocation" x="1780" y="288"/>
         </scene>
-        <!--Item-->
+        <!--List-->
         <scene sceneID="c2U-r0-13R">
             <objects>
-                <viewController id="0gJ-Ta-xvt" sceneMemberID="viewController">
+                <viewController id="0gJ-Ta-xvt" userLabel="List" customClass="ListViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="d2h-z9-lcb"/>
                         <viewControllerLayoutGuide type="bottom" id="lSf-T4-5fK"/>
@@ -104,6 +104,9 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="geL-M0-n8o">
                                 <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="0gJ-Ta-xvt" id="LzM-of-WyF"/>
+                                </connections>
                             </tableView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ui5-M2-Cwx">
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
