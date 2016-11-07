@@ -35,7 +35,7 @@ class UdacityClient : NSObject
     // MARK : Based on the name of the resource, construct the API URL to be invoked.
     func getMethodURL (resourceName: String) -> NSURL
     {
-        return NSURL(fileURLWithPath: BaseURL.API + resourceName);
+        return NSURL(string: BaseURL.API + resourceName)!;
     }
     
     // MARK : Function to initiate the API call via. Task.
