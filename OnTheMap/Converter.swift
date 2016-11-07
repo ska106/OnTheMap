@@ -23,6 +23,9 @@ class Converter
         {
             print(error)
         }
+        parseJSONToAnyObject(jsonData) { (result, error) in
+            
+        }
         return jsonData
     }
     
@@ -33,6 +36,7 @@ class Converter
         do
         {
             parsedResponse = try NSJSONSerialization.JSONObjectWithData(response, options: NSJSONReadingOptions.AllowFragments)
+            print("parseJSONToAnyObject :  " + parsedResponse.description)
             completionHandler(result: parsedResponse, error: nil)
         }
         catch let error as NSError
