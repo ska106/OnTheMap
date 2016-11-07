@@ -161,7 +161,6 @@
 			children = (
 				C09AEB381DB308550087723C /* Parse */,
 				C09AEB371DB3084B0087723C /* Udacity */,
-				C09AEB351DB2EADB0087723C /* StudentInformation.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -191,6 +190,7 @@
 			children = (
 				C09AEB401DB308F10087723C /* ParseConstants.swift */,
 				C09AEB421DB308FB0087723C /* ParseClient.swift */,
+				C09AEB351DB2EADB0087723C /* StudentInformation.swift */,
 			);
 			name = Parse;
 			sourceTree = "<group>";
