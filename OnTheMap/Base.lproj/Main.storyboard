@@ -24,10 +24,10 @@
             </objects>
             <point key="canvasLocation" x="998" y="594"/>
         </scene>
-        <!--View Controller-->
+        <!--Info Post View Controller-->
         <scene sceneID="Vfw-M2-UzW">
             <objects>
-                <viewController id="MoU-ni-3XZ" sceneMemberID="viewController">
+                <viewController id="MoU-ni-3XZ" customClass="InfoPostViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mnh-eJ-kog"/>
                         <viewControllerLayoutGuide type="bottom" id="dOb-jg-hOX"/>
@@ -216,7 +216,7 @@
                                 </constraints>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="c5y-aM-c63"/>

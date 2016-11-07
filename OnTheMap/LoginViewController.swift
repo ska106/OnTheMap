@@ -32,6 +32,7 @@ class LoginViewController : UIViewController
     override func viewWillAppear(animated: Bool)
     {
         super.viewWillAppear(animated)
+        self.email.text=""
         self.password.text = ""
     }
     
