@@ -133,7 +133,7 @@ class UdacityClient : NSObject
     }
 
     // MARK : Udacity Logout
-    func logout (userName: String, completionHandler : (success:Bool,  errorMessage:String? ) ->Void )
+    func logout (completionHandler : (success:Bool,  errorMessage:String? ) ->Void )
     {
         //Initialize the Request to invoke API.
         let request = NSMutableURLRequest(URL:getMethodURL(Methods.Session))
@@ -156,7 +156,6 @@ class UdacityClient : NSObject
             {
                 //Success
                 completionHandler(success: true, errorMessage: nil)
-                
             }
             else
             {
