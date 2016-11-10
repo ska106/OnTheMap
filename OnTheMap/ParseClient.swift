@@ -21,10 +21,13 @@ class ParseClient : NSObject
     }
     
     // MARK : Prepare the HTTP header for the request.
-    func setHeaders(request: NSMutableURLRequest) -> NSMutableURLRequest
+    func setHeaders(request: NSMutableURLRequest, setJson:Bool) -> NSMutableURLRequest
     {
-        request.addValue(HeaderValues.JSON, forHTTPHeaderField: HeaderKeys.Accept)
-        request.addValue(HeaderValues.JSON, forHTTPHeaderField: HeaderKeys.ContentType)
+        if (setJson)
+        {
+            request.addValue(HeaderValues.JSON, forHTTPHeaderField: HeaderKeys.Accept)
+            request.addValue(HeaderValues.JSON, forHTTPHeaderField: HeaderKeys.ContentType)
+        }
         request.addValue(BaseURL.APIID, forHTTPHeaderField: HeaderKeys.ApplicationId)
         request.addValue(BaseURL.APIKey, forHTTPHeaderField: HeaderKeys.RestAPIKey)
         return request
@@ -33,25 +36,25 @@ class ParseClient : NSObject
     // MARK : Based on the name of the resource, construct the API URL to be invoked.
     func getMethodURL(resourceName: String) -> NSURL
     {
-        return NSURL(fileURLWithPath: BaseURL.API + resourceName);
+        return NSURL(string: BaseURL.API + resourceName)!;
     }
     
     
     // MARK : Method overloaded :: Based on the name of the resource, construct the API URL to be invoked.
     func getMethodURL (resourceName: String, id:String) -> NSURL
     {
-        return NSURL(fileURLWithPath: BaseURL.API + resourceName + "?where=%7B%22uniqueKey%22%3A%22" + id + "%22%7D");
+        return NSURL(string: BaseURL.API + resourceName + "?where=%7B%22uniqueKey%22%3A%22" + id + "%22%7D")!;
     }
     
     // MARK : Based on the name of the resource, construct the API URL to be invoked.
     func getMethodURLForPut (resourceName: String, id:String) -> NSURL
     {
-        return NSURL(fileURLWithPath: BaseURL.API + resourceName + "/" + id);
+        return NSURL(string: BaseURL.API + resourceName + "/" + id)!;
     }
     
     
     // MARK : Function to initiate the API call via. Task.
-    func makeTaskCall (request:NSURLRequest , completionHandler : (result : AnyObject? , error: NSError?) -> Void) -> NSURLSessionTask
+    func makeTaskCall (request:NSURLRequest , completionHandlerForTaskCall : (result : AnyObject? , error: NSError?) -> Void)
     {
         let session = NSURLSession.sharedSession()
         
@@ -63,25 +66,23 @@ class ParseClient : NSObject
             {
                 //Success
                 // Convert the JSON to AnyObject so that it can be mapped to the completionHandler here.
-                Converter.parseJSONToAnyObject(data!, completionHandler: completionHandler)
-                completionHandler(result:data , error: nil)
+                Converter.parseJSONToAnyObject(data!, completionHandler: completionHandlerForTaskCall)
             }
             else
             {
                 //Failure
-                completionHandler(result: nil, error: error!)
+                completionHandlerForTaskCall(result: nil, error: error!)
             }
         }
         task.resume()
-        return task
     }
     
     //MARK : Get Student Locations
-    func getStudentLocation (completionHandler: (success: Bool,errorMessage : String?)->Void)
+    func getStudentLocations (completionHandlerForStudentLocations: (success: Bool,errorMessage : String?)->Void)
     {
         //Initialize the Request to invoke API.
-        let request = NSMutableURLRequest(URL:getMethodURL(Methods.studentLocation))
-        //request.HTTPMethod = "GET"
+        var request = NSMutableURLRequest(URL:getMethodURL(Methods.studentLocation))
+        request = setHeaders(request, setJson: false)
         makeTaskCall(request) { (result, error) in
             if error == nil
             {
@@ -89,18 +90,18 @@ class ParseClient : NSObject
                 if let results = result?.valueForKey(JSONResponseKey.results) as? [[String:AnyObject]]
                 {
                     self.studentLocations = StudentInformation.getLocationsFromResults(results)
-                    completionHandler(success: true,errorMessage: nil)
+                    completionHandlerForStudentLocations(success: true,errorMessage: nil)
                 }
                 else
                 {
                     //Failure
-                    completionHandler(success: false, errorMessage : Errors.UnexpectedSystemError)
+                    completionHandlerForStudentLocations(success: false, errorMessage : Errors.UnexpectedSystemError)
                 }
             }
             else
             {
                 //Failure
-                completionHandler(success:false, errorMessage: Errors.connectionError)
+                completionHandlerForStudentLocations(success:false, errorMessage: Errors.connectionError)
             }
         }
     }
