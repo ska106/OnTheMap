@@ -39,27 +39,31 @@ class UdacityClient : NSObject
     }
     
     // MARK : Function to initiate the API call via. Task.
-    func makeTaskCall (request:NSURLRequest , completionHandler : (result : AnyObject? , error: NSError?) -> Void)
+    func makeTaskCall (request:NSURLRequest , completionHandlerForTaskCall : (result : AnyObject? , error: NSError?) -> Void)
         // ->NSURLSessionTask
     {
+        
+        print("In MakeTaskCall request - " + request.description)
         let session = NSURLSession.sharedSession()
         
         //Create Task
         let task = session.dataTaskWithRequest(request) { (data, response, error) in
             
+            print("In dataTaskWithRequest Completionhandler")
             //Check for error
             if error == nil
             {
                 //Success
+                print("MakeTaskCall.Success")
                 let newData = data?.subdataWithRange(NSMakeRange(5, (data?.length)! - 5)) //Subset response data - based on Udacity security standards.
                 // Convert the JSON to AnyObject so that it can be mapped to the completionHandler here.
-                Converter.parseJSONToAnyObject(newData!, completionHandler: completionHandler)
-                completionHandler(result:newData , error: nil)
+                Converter.parseJSONToAnyObject(newData!, completionHandler: completionHandlerForTaskCall)
+                //completionHandlerForTaskCall(result:newData , error: nil)
             }
             else
             {
                 //Failure
-                completionHandler(result: nil, error: error!)
+                completionHandlerForTaskCall(result: nil, error: error!)
             }
         }
         task.resume()
@@ -82,7 +86,9 @@ class UdacityClient : NSObject
         //Convert the apiRequest to NSData and assign it to request HTTP Body.
         request.HTTPBody = Converter.toNSData(apiRequest)
         
-        makeTaskCall(request, completionHandler: { (result, error) in
+        makeTaskCall(request, completionHandlerForTaskCall: { (result, error) in
+            
+            print("In makeTaskCall Completion Handler")
             if error == nil
             {
                 //Success
@@ -95,7 +101,7 @@ class UdacityClient : NSObject
                         self.userId = userId
                         print("UserID : " + self.userId)
                         // Get User Info based on the user ID above.
-                        self.getStudentInfo(userId, completionHandler: { (success, errorMessage) in
+                        self.getStudentInfo(userId, completionHandlerForStudentInfo: { (success, errorMessage) in
                             if (success)
                             {
                                 print ("\n User Full Name =  \(self.userFirstName) \(self.userLastName)")
@@ -163,7 +169,7 @@ class UdacityClient : NSObject
     }
     
     // MARK : Get Student Data
-    func getStudentInfo (userId : String, completionHandler : (success:Bool,  errorMessage:String? ) ->Void)
+    func getStudentInfo (userId : String, completionHandlerForStudentInfo : (success:Bool,  errorMessage:String? ) ->Void)
     {
         print(">>> UdacityClient.getStudentInfo")
         //Initialize the Request to invoke API.
@@ -190,12 +196,12 @@ class UdacityClient : NSObject
                         self.userLastName = lName
                     }
                     print("Student Name : \(self.userFirstName) \(self.userLastName)")
-                    completionHandler(success: true, errorMessage: nil)
+                    completionHandlerForStudentInfo(success: true, errorMessage: nil)
                 }
             }
             else
             {
-                completionHandler(success:false,errorMessage: Errors.connectionError)
+                completionHandlerForStudentInfo(success:false,errorMessage: Errors.connectionError)
             }
          }
     }
