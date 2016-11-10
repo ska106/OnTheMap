@@ -65,8 +65,8 @@
                                             </connections>
                                         </barButtonItem>
                                         <rightBarButtonItems>
-                                            <barButtonItem image="pin" id="XGh-DJ-Gsy"/>
                                             <barButtonItem systemItem="refresh" id="HQq-Zl-cGi"/>
+                                            <barButtonItem image="pin" id="XGh-DJ-Gsy"/>
                                         </rightBarButtonItems>
                                     </navigationItem>
                                 </items>
@@ -119,8 +119,8 @@
                                             </connections>
                                         </barButtonItem>
                                         <rightBarButtonItems>
-                                            <barButtonItem image="pin" id="ctn-iS-oYB"/>
                                             <barButtonItem systemItem="refresh" id="41e-5x-eMd"/>
+                                            <barButtonItem image="pin" id="ctn-iS-oYB"/>
                                         </rightBarButtonItems>
                                     </navigationItem>
                                 </items>
