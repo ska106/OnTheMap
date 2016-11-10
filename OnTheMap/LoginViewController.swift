@@ -16,6 +16,7 @@ class LoginViewController : UIViewController
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var udacityLoginButton: UIButton!
+    @IBOutlet weak var loginStatus: UILabel!
     
     var udClient : UdacityClient!
     
@@ -32,28 +33,52 @@ class LoginViewController : UIViewController
     override func viewWillAppear(animated: Bool)
     {
         super.viewWillAppear(animated)
+        loginStatus.text = ""
         self.email.text=""
         self.password.text = ""
     }
     
     @IBAction func loginUdacity(sender: AnyObject)
     {
+        print(">>> loginUdacity ")
+        self.loginStartActivity(true)
+        self.loginStatus.text = "Please wait ..."
         udClient.loginWithCredentials(email.text!, password: password.text!) { (success, errorMessage) in
+            print ("In loginWithCredentials completionHandler ")
             if (success)
             {
-                //Move to  - OnTheMapTabBarContoller
-                let controller = self.storyboard!.instantiateViewControllerWithIdentifier("OnTheMapTabBarController") as! UITabBarController
-                self.presentViewController(controller, animated: true, completion: nil)
+                self.loginStatus.text = "Login successful."
+                dispatch_async(dispatch_get_main_queue())
+                {
+                    //Login Activity has been completed.
+                    self.loginStartActivity(false)
+                    //Move to  - OnTheMapTabBarContoller
+                    self.performSegueWithIdentifier("ToTabController", sender: self)
+                }
             }
             else
             {
-                //TODO: Stay on the same page and display error message on the login page.
+                //TODO: Stay on the same page and display error message.
                 if errorMessage == UdacityClient.Errors.loginError
                 {
                     print (errorMessage)
                 }
+                
+                dispatch_async(dispatch_get_main_queue())
+                {
+                    self.loginStatus.text = "Login error, please try again."
+                    self.loginStartActivity(false)
+                }
             }
-            
         }
+    }
+    
+    // MARK : Function to let user know that login process has started.
+    func loginStartActivity(started:Bool) -> Void
+    {
+        udacityLoginButton.hidden = started
+        email.userInteractionEnabled = !started
+        password.userInteractionEnabled = !started
+        
     }
 }

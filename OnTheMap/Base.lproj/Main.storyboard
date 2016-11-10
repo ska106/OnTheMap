@@ -195,7 +195,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" alpha="0.65000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Email" borderStyle="bezel" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lji-yw-TZc">
-                                <rect key="frame" x="175.5" y="271" width="250" height="30"/>
+                                <rect key="frame" x="175" y="271" width="250" height="30"/>
                                 <color key="backgroundColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="7VE-vn-Q4X"/>
@@ -244,6 +244,12 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xu8-pu-LFl">
+                                <rect key="frame" x="275.5" y="487" width="49.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -255,9 +261,11 @@
                             <constraint firstItem="C8P-CX-tLV" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="92" id="EAi-ns-sTg"/>
                             <constraint firstItem="lji-yw-TZc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="EBo-O7-xbS"/>
                             <constraint firstItem="DF1-gn-lQb" firstAttribute="top" secondItem="5oO-gF-wEu" secondAttribute="bottom" constant="8" id="How-8Y-bQs"/>
+                            <constraint firstItem="Xu8-pu-LFl" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Py0-vs-5vm"/>
                             <constraint firstItem="A5o-Te-etC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Rpj-FX-YCn"/>
                             <constraint firstItem="DF1-gn-lQb" firstAttribute="top" secondItem="5oO-gF-wEu" secondAttribute="bottom" constant="8" id="cfd-lI-ZTe"/>
                             <constraint firstItem="5oO-gF-wEu" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="kra-Jn-n7b"/>
+                            <constraint firstItem="Xu8-pu-LFl" firstAttribute="top" secondItem="DF1-gn-lQb" secondAttribute="bottom" constant="85" id="t1v-d5-eTO"/>
                             <constraint firstItem="5oO-gF-wEu" firstAttribute="top" secondItem="A5o-Te-etC" secondAttribute="bottom" constant="8" id="yBd-7W-wJk"/>
                             <constraint firstItem="A5o-Te-etC" firstAttribute="top" secondItem="lji-yw-TZc" secondAttribute="bottom" constant="8" id="yS3-JH-c7n"/>
                         </constraints>
@@ -269,6 +277,7 @@
                     </view>
                     <connections>
                         <outlet property="email" destination="lji-yw-TZc" id="65M-nd-49E"/>
+                        <outlet property="loginStatus" destination="Xu8-pu-LFl" id="LfO-ic-G0n"/>
                         <outlet property="password" destination="A5o-Te-etC" id="D7c-Es-p6s"/>
                         <outlet property="udacityLoginButton" destination="5oO-gF-wEu" id="3fv-wG-xev"/>
                         <segue destination="qtc-cu-Xh6" kind="show" identifier="ToTabController" id="eok-gi-J0n"/>
