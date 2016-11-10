@@ -53,6 +53,8 @@ class ListViewController:UIViewController, UITableViewDataSource, UITableViewDel
         }
     }
         
+    @IBAction func performLogout(sender: AnyObject) {
+    }
    
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)

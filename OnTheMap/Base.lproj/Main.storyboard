@@ -59,7 +59,11 @@
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                                 <items>
                                     <navigationItem title="On The Map" id="H6N-ob-VEc">
-                                        <barButtonItem key="leftBarButtonItem" title="Logout" id="t3I-yt-xlL" userLabel="logout"/>
+                                        <barButtonItem key="leftBarButtonItem" title="Logout" id="t3I-yt-xlL" userLabel="logout">
+                                            <connections>
+                                                <action selector="performLogout:" destination="xyb-WZ-0FE" id="bhH-6e-kEM"/>
+                                            </connections>
+                                        </barButtonItem>
                                         <rightBarButtonItems>
                                             <barButtonItem image="pin" id="XGh-DJ-Gsy"/>
                                             <barButtonItem systemItem="refresh" id="HQq-Zl-cGi"/>
@@ -109,7 +113,11 @@
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                                 <items>
                                     <navigationItem title="On The Map" id="Hc2-aU-bxy">
-                                        <barButtonItem key="leftBarButtonItem" title="Logout" id="z4K-XP-laV" userLabel="logout"/>
+                                        <barButtonItem key="leftBarButtonItem" title="Logout" id="z4K-XP-laV" userLabel="logout">
+                                            <connections>
+                                                <action selector="performLogout:" destination="0gJ-Ta-xvt" id="Qc4-JB-lmo"/>
+                                            </connections>
+                                        </barButtonItem>
                                         <rightBarButtonItems>
                                             <barButtonItem image="pin" id="ctn-iS-oYB"/>
                                             <barButtonItem systemItem="refresh" id="41e-5x-eMd"/>

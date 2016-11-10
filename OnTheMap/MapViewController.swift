@@ -88,6 +88,10 @@ class MapViewController : UIViewController, MKMapViewDelegate
         }
     }
    
+    @IBAction func performLogout(sender: AnyObject)
+    {
+    }
+    
     // MARK: - MKMapViewDelegate
     // Here we create a view with a "right callout accessory view". You might choose to look into other
     // decoration alternatives. Notice the similarity between this method and the cellForRowAtIndexPath
