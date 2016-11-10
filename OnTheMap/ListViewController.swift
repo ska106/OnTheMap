@@ -70,7 +70,7 @@ class ListViewController:UIViewController, UITableViewDataSource, UITableViewDel
         }
     }
     
-    //MARK : We are going to have only  section in this table.
+    //MARK : We are going to have only 1 section in this table.
     func numberOfSectionsInTableView(tableView: UITableView) -> Int
     {
         return 1
