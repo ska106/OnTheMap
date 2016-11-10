@@ -40,7 +40,6 @@ class UdacityClient : NSObject
     
     // MARK : Function to initiate the API call via. Task.
     func makeTaskCall (request:NSURLRequest , completionHandlerForTaskCall : (result : AnyObject? , error: NSError?) -> Void)
-        // ->NSURLSessionTask
     {
         
         print("In MakeTaskCall request - " + request.description)
@@ -58,7 +57,6 @@ class UdacityClient : NSObject
                 let newData = data?.subdataWithRange(NSMakeRange(5, (data?.length)! - 5)) //Subset response data - based on Udacity security standards.
                 // Convert the JSON to AnyObject so that it can be mapped to the completionHandler here.
                 Converter.parseJSONToAnyObject(newData!, completionHandler: completionHandlerForTaskCall)
-                //completionHandlerForTaskCall(result:newData , error: nil)
             }
             else
             {
@@ -67,7 +65,6 @@ class UdacityClient : NSObject
             }
         }
         task.resume()
-        //return task
     }
     
     // MARK : Login Udacity using username and password.
