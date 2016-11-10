@@ -26,7 +26,8 @@ class ListViewController:UIViewController, UITableViewDataSource, UITableViewDel
     override func viewWillAppear(animated:Bool)
     {
         super.viewWillAppear(animated)
-        self.parseClient.getStudentLocation() { success, errorMessage in
+        
+        self.parseClient.getStudentLocations { (success, errorMessage) in
             if success
             {
                 dispatch_async(dispatch_get_main_queue())
@@ -39,7 +40,8 @@ class ListViewController:UIViewController, UITableViewDataSource, UITableViewDel
                 //Display error message
                 let alert = UIAlertController(title: "Error", message: errorMessage, preferredStyle: UIAlertControllerStyle.Alert)
                 let dismissAction = UIAlertAction(title: "OK", style: .Default)
-                { (action) in
+                {
+                    (action) in
                 }
                 alert.addAction(dismissAction)
                 dispatch_async(dispatch_get_main_queue())
@@ -47,15 +49,18 @@ class ListViewController:UIViewController, UITableViewDataSource, UITableViewDel
                     self.presentViewController(alert, animated: true, completion: nil)
                 }
             }
+
         }
     }
+        
+   
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
         let location = parseClient.studentLocations[indexPath.row]
         
         let app = UIApplication.sharedApplication()
-        if let url = NSURL(string: location.mediaURL)
+        if let url = NSURL(string: location.mediaURL!)
         {
             app.openURL( url )
         }
