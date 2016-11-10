@@ -35,7 +35,7 @@ class MapViewController : UIViewController, MKMapViewDelegate
         //Get the singleton instances of the API clients.
         parseClient = ParseClient.sharedInstance
         
-        parseClient.getStudentLocation() { success, errorMessage in
+        parseClient.getStudentLocations() { success, errorMessage in
             
             // We will create an MKPointAnnotation for each dictionary in "locations". The
             // point annotations will be stored in this array, and then provided to the map view.
@@ -50,8 +50,8 @@ class MapViewController : UIViewController, MKMapViewDelegate
                 for location in self.parseClient.studentLocations
                 {
                     //Assign the co-ordinates.
-                    let lat = CLLocationDegrees(location.latitude)
-                    let long = CLLocationDegrees(location.longitude)
+                    let lat = CLLocationDegrees(location.latitude!)
+                    let long = CLLocationDegrees(location.longitude!)
                     
                     let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
                     
