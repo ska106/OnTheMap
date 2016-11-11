@@ -33,6 +33,10 @@ class InfoPostViewController:UIViewController
         super.viewWillAppear(animated)
     }
     
+    @IBAction func cancelButtonAction(sender: AnyObject)
+    {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
     @IBAction func bottomButtonAction(sender: AnyObject)
     {
         
