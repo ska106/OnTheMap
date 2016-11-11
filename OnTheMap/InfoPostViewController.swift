@@ -8,9 +8,16 @@
 
 import Foundation
 import UIKit
+import MapKit
 
 class InfoPostViewController:UIViewController
 {
+    @IBOutlet weak var topLabel: UILabel!
+    @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var bottomButton: UIButton!
+    @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var studyLocationField: UITextField!
+    
     var parseClient : ParseClient!
     
     override func viewDidLoad()
@@ -26,4 +33,8 @@ class InfoPostViewController:UIViewController
         super.viewWillAppear(animated)
     }
     
+    @IBAction func bottomButtonAction(sender: AnyObject)
+    {
+        
+    }
 }

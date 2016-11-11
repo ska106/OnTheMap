@@ -67,7 +67,6 @@ class ListViewController:UIViewController, UITableViewDataSource, UITableViewDel
         }
     }
    
-    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
         let location = parseClient.studentLocations[indexPath.row]
