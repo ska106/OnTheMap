@@ -27,6 +27,7 @@ class MapViewController : UIViewController, MKMapViewDelegate
     @IBOutlet weak var mapview: MKMapView!
     
     var parseClient : ParseClient!
+    var udClient : UdacityClient!
     
     override func viewDidLoad()
     {
@@ -34,6 +35,7 @@ class MapViewController : UIViewController, MKMapViewDelegate
         
         //Get the singleton instances of the API clients.
         parseClient = ParseClient.sharedInstance
+        udClient = UdacityClient.sharedInstance
         
         parseClient.getStudentLocations() { success, errorMessage in
             
@@ -90,6 +92,14 @@ class MapViewController : UIViewController, MKMapViewDelegate
    
     @IBAction func performLogout(sender: AnyObject)
     {
+        print(">>>MapViewController.performLogout")
+        udClient.logout { (success, errorMessage) in
+            if success == true
+            {
+                let loginVC = self.storyboard?.instantiateViewControllerWithIdentifier("LoginVC") as! LoginViewController
+                self.presentViewController(loginVC,animated: true, completion: nil)
+            }
+        }
     }
     
     // MARK: - MKMapViewDelegate

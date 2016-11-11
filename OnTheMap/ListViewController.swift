@@ -12,6 +12,7 @@ import UIKit
 class ListViewController:UIViewController, UITableViewDataSource, UITableViewDelegate
 {
     var parseClient:ParseClient!
+    var udClient:UdacityClient!
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -21,6 +22,7 @@ class ListViewController:UIViewController, UITableViewDataSource, UITableViewDel
         
         //Get the singleton instances of the API clients.
         parseClient = ParseClient.sharedInstance
+        udClient = UdacityClient.sharedInstance
     }
     
     override func viewWillAppear(animated:Bool)
@@ -53,7 +55,16 @@ class ListViewController:UIViewController, UITableViewDataSource, UITableViewDel
         }
     }
         
-    @IBAction func performLogout(sender: AnyObject) {
+    @IBAction func performLogout(sender: AnyObject)
+    {
+        print(">>>ListViewController.performLogout")
+        udClient.logout { (success, errorMessage) in
+            if success == true
+            {
+                let loginVC = self.storyboard?.instantiateViewControllerWithIdentifier("LoginVC") as! LoginViewController
+                self.presentViewController(loginVC,animated: true, completion: nil)
+            }
+        }
     }
    
     
@@ -78,7 +89,7 @@ class ListViewController:UIViewController, UITableViewDataSource, UITableViewDel
         return 1
     }
     
-    //MARK : Function that determines the number for Rows in the table. This will be dependent on the record set fetched 
+    //MARK : Function that determines the number for Rows in the table. This will be dependent on the record set fetched
     //       by the parseClient --> StudentLocations[]
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
