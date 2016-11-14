@@ -100,7 +100,7 @@ class ListViewController:UIViewController, UITableViewDataSource, UITableViewDel
     {
         let cell = tableView.dequeueReusableCellWithIdentifier("studentLocationCell", forIndexPath: indexPath)
         let location = parseClient.studentLocations[indexPath.row]
-        cell.textLabel?.text = "\(location.firstName) \(location.lastName)"
+        cell.textLabel?.text = "\(location.firstName!) \(location.lastName!)"
         cell.detailTextLabel?.text = location.mediaURL
         return cell
     }
