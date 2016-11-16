@@ -13,7 +13,8 @@ extension UdacityClient
     // MARK: Constants
     struct BaseURL
     {
-        static let API = "https://www.udacity.com/api"
+        static var Host = "https://www.udacity.com"
+        static let API = Host + "/api"
     }
     
     // MARK: Methods
