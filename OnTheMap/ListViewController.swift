@@ -23,6 +23,7 @@ class ListViewController:UIViewController, UITableViewDataSource, UITableViewDel
         //Get the singleton instances of the API clients.
         parseClient = ParseClient.sharedInstance
         udClient = UdacityClient.sharedInstance
+        tableView.delegate = self
     }
     
     override func viewWillAppear(animated:Bool)
@@ -69,10 +70,10 @@ class ListViewController:UIViewController, UITableViewDataSource, UITableViewDel
    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
-        let location = parseClient.studentLocations[indexPath.row]
+        let student = parseClient.studentLocations[indexPath.row]
         
         let app = UIApplication.sharedApplication()
-        if let url = NSURL(string: location.mediaURL!)
+        if let url = NSURL(string: student.mediaURL!)
         {
             app.openURL( url )
         }
