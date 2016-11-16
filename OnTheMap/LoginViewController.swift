@@ -17,7 +17,6 @@ class LoginViewController : UIViewController
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var udacityLoginButton: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    
     var udClient : UdacityClient!
     
     // MARK : LifeCycle
@@ -36,6 +35,11 @@ class LoginViewController : UIViewController
         self.activityIndicator.hidden = true
         self.email.text=""
         self.password.text = ""
+    }
+    
+    @IBAction func tapUdacitySignup(sender: AnyObject)
+    {
+        UIApplication.sharedApplication().openURL(NSURL(string:UdacityClient.BaseURL.Host)!)
     }
     
     @IBAction func loginUdacity(sender: AnyObject)

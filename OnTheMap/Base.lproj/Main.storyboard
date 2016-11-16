@@ -327,39 +327,36 @@
                                     <action selector="loginUdacity:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eMY-N2-ik9"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account? Sign up" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DF1-gn-lQb" userLabel="SignUpLabel">
-                                <rect key="frame" x="198" y="385" width="204" height="17"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="vyz-Vt-mZr">
                                 <rect key="frame" x="290" y="290" width="20" height="20"/>
                             </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Pw-ZD-wlg">
+                                <rect key="frame" x="192" y="385" width="216" height="30"/>
+                                <state key="normal" title="Don't have an account? Sign up">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="tapUdacitySignup:" destination="BYZ-38-t0r" eventType="touchUpInside" id="049-U2-XAh"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="C8P-CX-tLV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="0zc-gq-cBX"/>
-                            <constraint firstItem="DF1-gn-lQb" firstAttribute="top" secondItem="5oO-gF-wEu" secondAttribute="bottom" constant="8" symbolic="YES" id="1NR-F2-UJY"/>
                             <constraint firstItem="l4g-SD-ujZ" firstAttribute="top" secondItem="C8P-CX-tLV" secondAttribute="bottom" constant="1" id="6rE-hL-uN6"/>
                             <constraint firstItem="lji-yw-TZc" firstAttribute="top" secondItem="l4g-SD-ujZ" secondAttribute="bottom" constant="14" id="CaJ-q0-QCA"/>
                             <constraint firstItem="l4g-SD-ujZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="CnN-5S-512"/>
                             <constraint firstItem="C8P-CX-tLV" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="92" id="EAi-ns-sTg"/>
                             <constraint firstItem="lji-yw-TZc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="EBo-O7-xbS"/>
-                            <constraint firstItem="DF1-gn-lQb" firstAttribute="top" secondItem="5oO-gF-wEu" secondAttribute="bottom" constant="8" id="How-8Y-bQs"/>
                             <constraint firstItem="A5o-Te-etC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Rpj-FX-YCn"/>
                             <constraint firstItem="vyz-Vt-mZr" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="TUQ-7Y-PXF"/>
-                            <constraint firstItem="DF1-gn-lQb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="grm-ZP-ZDg"/>
+                            <constraint firstItem="3Pw-ZD-wlg" firstAttribute="top" secondItem="5oO-gF-wEu" secondAttribute="bottom" constant="8" symbolic="YES" id="Xs3-iZ-kUY"/>
+                            <constraint firstItem="3Pw-ZD-wlg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hZn-H8-0Ti"/>
                             <constraint firstItem="5oO-gF-wEu" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="kra-Jn-n7b"/>
                             <constraint firstItem="vyz-Vt-mZr" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="nfp-PE-au9"/>
                             <constraint firstItem="5oO-gF-wEu" firstAttribute="top" secondItem="A5o-Te-etC" secondAttribute="bottom" constant="8" id="yBd-7W-wJk"/>
                             <constraint firstItem="A5o-Te-etC" firstAttribute="top" secondItem="lji-yw-TZc" secondAttribute="bottom" constant="8" id="yS3-JH-c7n"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="How-8Y-bQs"/>
-                            </mask>
-                        </variation>
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="vyz-Vt-mZr" id="zzt-Of-ocJ"/>
