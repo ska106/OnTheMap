@@ -16,7 +16,7 @@ class LoginViewController : UIViewController
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var udacityLoginButton: UIButton!
-    @IBOutlet weak var loginStatus: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var udClient : UdacityClient!
     
@@ -33,7 +33,7 @@ class LoginViewController : UIViewController
     override func viewWillAppear(animated: Bool)
     {
         super.viewWillAppear(animated)
-        loginStatus.text = ""
+        self.activityIndicator.hidden = true
         self.email.text=""
         self.password.text = ""
     }
@@ -42,12 +42,10 @@ class LoginViewController : UIViewController
     {
         print(">>> loginUdacity ")
         self.loginStartActivity(true)
-        self.loginStatus.text = "Please wait ..."
         udClient.loginWithCredentials(email.text!, password: password.text!) { (success, errorMessage) in
             print ("In loginWithCredentials completionHandler ")
             if (success)
             {
-                self.loginStatus.text = "Login successful."
                 dispatch_async(dispatch_get_main_queue())
                 {
                     //Login Activity has been completed.
@@ -66,7 +64,6 @@ class LoginViewController : UIViewController
                 
                 dispatch_async(dispatch_get_main_queue())
                 {
-                    self.loginStatus.text = "Login error, please try again."
                     self.loginStartActivity(false)
                 }
             }
@@ -79,6 +76,14 @@ class LoginViewController : UIViewController
         udacityLoginButton.hidden = started
         email.userInteractionEnabled = !started
         password.userInteractionEnabled = !started
-        
+        activityIndicator.hidden = !started
+        if (started)
+        {
+            activityIndicator.startAnimating()
+        }
+        else
+        {
+            activityIndicator.stopAnimating()
+        }
     }
 }
