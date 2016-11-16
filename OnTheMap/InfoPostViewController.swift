@@ -37,6 +37,7 @@ class InfoPostViewController:UIViewController
     {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
+    
     @IBAction func bottomButtonAction(sender: AnyObject)
     {
         

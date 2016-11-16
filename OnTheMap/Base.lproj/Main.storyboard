@@ -57,9 +57,6 @@
                                     <action selector="cancelButtonAction:" destination="MoU-ni-3XZ" eventType="touchUpInside" id="h5C-1K-104"/>
                                 </connections>
                             </button>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Yiy-Ny-7ih">
-                                <rect key="frame" x="0.0" y="110" width="600" height="490"/>
-                            </mapView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Enter Location" borderStyle="bezel" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XBZ-Kd-NGt">
                                 <rect key="frame" x="0.0" y="110" width="600" height="381"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -88,6 +85,9 @@
                                     <action selector="bottomButtonAction:" destination="MoU-ni-3XZ" eventType="touchUpInside" id="uOp-oF-8wT"/>
                                 </connections>
                             </button>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Yiy-Ny-7ih">
+                                <rect key="frame" x="0.0" y="110" width="600" height="490"/>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>

@@ -61,7 +61,6 @@ class MapViewController : UIViewController, MKMapViewDelegate
                     annotation.title = "\(location.firstName!) \(location.lastName!)"
                     annotation.subtitle = location.mediaURL
                     annotation.coordinate = coordinate
-                    
                     annotations.append(annotation)
                 }
             }
@@ -134,9 +133,10 @@ class MapViewController : UIViewController, MKMapViewDelegate
         if control == view.rightCalloutAccessoryView
         {
             let app = UIApplication.sharedApplication()
-            if let toOpen = view.annotation?.subtitle!
+            let mediaURL = NSURL(string:((view.annotation?.subtitle)!)!)
+            if app.canOpenURL(mediaURL!)
             {
-                app.openURL(NSURL(string: toOpen)!)
+                app.openURL(mediaURL!)
             }
         }
     }
