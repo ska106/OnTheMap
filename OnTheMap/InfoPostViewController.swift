@@ -50,22 +50,35 @@ class InfoPostViewController:UIViewController
     @IBAction func findAction(sender: AnyObject)
     {
         print(">>> findAction()")
-        self.displayAlert("Button Pressed.")
+        if (self.locationText.text != nil && self.locationText.text != "")
+        {
+            self.displayAlert("Please enter a location.")
+        }
+        else
+        {
+        }
     }
     
     @IBAction func submitAction(sender: AnyObject)
     {
         print (">>> submitAction(()")
+        if (self.mapURLText.text != nil && self.mapURLText.text != "")
+        {
+            self.displayAlert("Please enter a location.")
+        }
+        else
+        {
+        }
     }
     
     func startActivity()
     {
-        
+        self.activityIndicator.startAnimating()
     }
     
     func stopActivity()
     {
-        
+        self.activityIndicator.stopAnimating()
     }
     
     func displayAlert(message: String, completionHandler: ((UIAlertAction) -> Void)? = nil)
@@ -82,8 +95,9 @@ class InfoPostViewController:UIViewController
     
     func initializeScreen()
     {
-        submitButton.hidden = true
-        mapURLText.hidden = true
+        self.submitButton.hidden = true
+        self.mapURLText.hidden = true
+        self.activityIndicator.hidden = true
     }
     
 }
