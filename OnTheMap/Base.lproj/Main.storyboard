@@ -55,13 +55,13 @@
                                                 <state key="normal" title="Cancel"/>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Where are you studying today ?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AKr-d2-VzF">
-                                                <rect key="frame" x="0.0" y="44" width="580" height="48"/>
+                                                <rect key="frame" x="0.0" y="44" width="580" height="61"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Enter URL" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mnG-Je-eDe">
-                                                <rect key="frame" x="0.0" y="100" width="580" height="30"/>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Enter URL" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mnG-Je-eDe">
+                                                <rect key="frame" x="0.0" y="113" width="580" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
@@ -79,40 +79,46 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YCW-r1-ekP" userLabel="middleView">
                                 <rect key="frame" x="0.0" y="131" width="600" height="366"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WAb-gu-LS9">
-                                        <rect key="frame" x="8" y="52" width="584" height="30"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Enter a location" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WAb-gu-LS9">
+                                        <rect key="frame" x="8" y="21" width="570" height="30"/>
                                         <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="0.0" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="Kwf-yf-azS"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="WAb-gu-LS9" secondAttribute="trailing" constant="22" id="GQh-mE-XgO"/>
+                                    <constraint firstItem="WAb-gu-LS9" firstAttribute="leading" secondItem="YCW-r1-ekP" secondAttribute="leadingMargin" id="Roz-0O-HKN"/>
+                                    <constraint firstItem="WAb-gu-LS9" firstAttribute="top" secondItem="YCW-r1-ekP" secondAttribute="top" constant="21" id="hMn-q8-1Ts"/>
+                                </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gmW-29-X8M" userLabel="bottomView">
                                 <rect key="frame" x="0.0" y="497" width="600" height="103"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="bCj-an-tmX">
-                                        <rect key="frame" x="243" y="22" width="115" height="60"/>
+                                        <rect key="frame" x="20" y="20" width="560" height="63"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="taT-4D-jQL">
-                                                <rect key="frame" x="0.0" y="0.0" width="115" height="30"/>
+                                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="taT-4D-jQL">
+                                                <rect key="frame" x="223" y="0.0" width="114" height="33"/>
                                                 <state key="normal" title="Find On the Map"/>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pyp-n0-smJ">
-                                                <rect key="frame" x="33" y="30" width="49" height="30"/>
+                                                <rect key="frame" x="256" y="33" width="49" height="30"/>
                                                 <state key="normal" title="Submit"/>
                                             </button>
                                         </subviews>
-                                        <constraints>
-                                            <constraint firstItem="taT-4D-jQL" firstAttribute="leading" secondItem="bCj-an-tmX" secondAttribute="leading" id="AfJ-0B-bOP"/>
-                                            <constraint firstItem="Pyp-n0-smJ" firstAttribute="leading" secondItem="bCj-an-tmX" secondAttribute="leading" constant="33" id="yiR-9M-nE0"/>
-                                        </constraints>
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="bCj-an-tmX" firstAttribute="centerX" secondItem="gmW-29-X8M" secondAttribute="centerX" id="2dp-c0-3Fj"/>
-                                    <constraint firstItem="bCj-an-tmX" firstAttribute="centerY" secondItem="gmW-29-X8M" secondAttribute="centerY" id="IhX-gJ-3Wl"/>
+                                    <constraint firstItem="bCj-an-tmX" firstAttribute="top" secondItem="gmW-29-X8M" secondAttribute="top" constant="20" id="EEB-5s-dff"/>
+                                    <constraint firstItem="bCj-an-tmX" firstAttribute="leading" secondItem="gmW-29-X8M" secondAttribute="leading" constant="20" id="Kat-mb-ruj"/>
+                                    <constraint firstItem="bCj-an-tmX" firstAttribute="centerX" secondItem="gmW-29-X8M" secondAttribute="centerX" id="Kiu-6n-8YZ"/>
+                                    <constraint firstItem="bCj-an-tmX" firstAttribute="centerY" secondItem="gmW-29-X8M" secondAttribute="centerY" id="vCj-yZ-gQs"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -135,6 +141,15 @@
                             <constraint firstItem="gmW-29-X8M" firstAttribute="top" secondItem="YCW-r1-ekP" secondAttribute="bottom" id="z8b-yz-bpS"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="findButton" destination="taT-4D-jQL" id="r8e-zf-YRY"/>
+                        <outlet property="locationText" destination="WAb-gu-LS9" id="c1I-V1-LvV"/>
+                        <outlet property="mapURLText" destination="mnG-Je-eDe" id="rcb-sn-EoT"/>
+                        <outlet property="mapView" destination="Ohk-72-ZbP" id="4Lf-Fa-nTS"/>
+                        <outlet property="middleView" destination="YCW-r1-ekP" id="8KB-pK-pfW"/>
+                        <outlet property="submitButton" destination="Pyp-n0-smJ" id="rD5-Vf-Bdq"/>
+                        <outlet property="topLabel" destination="AKr-d2-VzF" id="rIM-NI-hfa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DTi-5l-Oqf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
