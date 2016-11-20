@@ -105,10 +105,16 @@
                                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="taT-4D-jQL">
                                                 <rect key="frame" x="223" y="0.0" width="114" height="33"/>
                                                 <state key="normal" title="Find On the Map"/>
+                                                <connections>
+                                                    <action selector="findAction:" destination="MoU-ni-3XZ" eventType="touchUpInside" id="rFm-GA-u8y"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pyp-n0-smJ">
                                                 <rect key="frame" x="256" y="33" width="49" height="30"/>
                                                 <state key="normal" title="Submit"/>
+                                                <connections>
+                                                    <action selector="submitAction:" destination="MoU-ni-3XZ" eventType="touchUpInside" id="hFd-To-0Xg"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>

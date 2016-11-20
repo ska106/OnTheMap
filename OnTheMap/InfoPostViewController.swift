@@ -14,6 +14,8 @@ class InfoPostViewController:UIViewController
 {
     
     var parseClient : ParseClient!
+    //Ref : https://developer.apple.com/reference/corelocation/clplacemark
+    var placemark: CLPlacemark? = nil
     
     @IBOutlet weak var topLabel: UILabel!
     @IBOutlet weak var middleView: UIView!
@@ -42,6 +44,16 @@ class InfoPostViewController:UIViewController
         if let presentingViewController = presentingViewController {
             presentingViewController.dismissViewControllerAnimated(true, completion: nil)
         }
+    }
+    
+    @IBAction func findAction(sender: AnyObject)
+    {
+        print(">>> findAction()")
+    }
+    
+    @IBAction func submitAction(sender: AnyObject)
+    {
+        print (">>> submitAction(()")
     }
     
     func startActivity()
