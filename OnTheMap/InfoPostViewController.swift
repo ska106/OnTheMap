@@ -24,6 +24,7 @@ class InfoPostViewController:UIViewController
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var findButton: UIButton!
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad()
     {
@@ -49,6 +50,7 @@ class InfoPostViewController:UIViewController
     @IBAction func findAction(sender: AnyObject)
     {
         print(">>> findAction()")
+        self.displayAlert("Button Pressed.")
     }
     
     @IBAction func submitAction(sender: AnyObject)
@@ -64,6 +66,18 @@ class InfoPostViewController:UIViewController
     func stopActivity()
     {
         
+    }
+    
+    func displayAlert(message: String, completionHandler: ((UIAlertAction) -> Void)? = nil)
+    {
+        dispatch_async(dispatch_get_main_queue())
+        {
+            self.stopActivity()
+            let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .Alert)
+            let okButton = UIAlertAction(title: "OK", style: .Default, handler: completionHandler)
+            alert.addAction(okButton)
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
     }
     
     func initializeScreen()
