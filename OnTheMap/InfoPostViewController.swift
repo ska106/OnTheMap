@@ -54,9 +54,41 @@ class InfoPostViewController:UIViewController
         if (self.locationText.text == nil || self.locationText.text == "")
         {
             self.displayAlert("Please enter a location.")
+            return
         }
         else
         {
+            self.startActivity()
+            let LOC_NOT_FOUND = "Could not find location entered. Please retry."
+            // put in a delay.
+            let delayInSeconds = 1.25
+            let delay = delayInSeconds * Double(NSEC_PER_SEC)
+            let popTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+            dispatch_after(popTime, dispatch_get_main_queue(),
+            {
+                //Ref : http://stackoverflow.com/questions/24345296/swift-clgeocoder-reversegeocodelocation-completionhandler-closure
+                let geocoder = CLGeocoder()
+                do
+                {
+                    geocoder.geocodeAddressString(self.locationText.text!, completionHandler: { (results, error) in
+                        if let error = error
+                        {
+                            print (error.description)
+                            self.displayAlert(LOC_NOT_FOUND)
+                        }
+                        else if (results!.isEmpty)
+                        {
+                            self.displayAlert(LOC_NOT_FOUND)
+                        }
+                        else
+                        {
+                            self.placemark = results![0]
+                            self.initializeScreen(2)
+                            self.mapView.showAnnotations([MKPlacemark(placemark: self.placemark!)], animated: true)
+                        }
+                    })
+                }
+            })
         }
     }
     
@@ -66,6 +98,7 @@ class InfoPostViewController:UIViewController
         if (self.mapURLText.text == nil || self.mapURLText.text == "")
         {
             self.displayAlert("Please enter a location.")
+            return
         }
         else
         {
@@ -94,11 +127,29 @@ class InfoPostViewController:UIViewController
         }
     }
     
-    func initializeScreen()
+    // stageNumber = 1 : the UI components needed for the first time view (Defaulted)
+    // stageNumber = 2 : the UI components needed for the second time view
+    func initializeScreen(stageNumber :Int = 1)
     {
-        self.submitButton.hidden = true
-        self.mapURLText.hidden = true
         self.activityIndicator.hidden = true
+        switch (stageNumber)
+        {
+            case 1 :
+                self.submitButton.hidden = true
+                self.findButton.hidden = false
+                self.locationText.hidden = false
+                self.middleView.hidden = false
+                self.mapURLText.hidden = true
+                self.topLabel.text = "Where are you studying today ?"
+            case 2 :
+                self.submitButton.hidden = false
+                self.findButton.hidden = true
+                self.locationText.hidden = true
+                self.middleView.hidden = true
+                self.mapURLText.hidden = false
+                self.topLabel.text = "Enter a URL for your location."
+            default: break
+        }
     }
     
 }
