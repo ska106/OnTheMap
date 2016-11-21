@@ -132,6 +132,7 @@ class ListViewController:UIViewController, UITableViewDataSource, UITableViewDel
         let cell = tableView.dequeueReusableCellWithIdentifier("studentLocationCell", forIndexPath: indexPath)
         let location = parseClient.studentLocations[indexPath.row]
         cell.textLabel?.text = "\(location.firstName!) \(location.lastName!)"
+        cell.imageView?.image = UIImage(contentsOfFile: "pin")
         cell.detailTextLabel?.text = location.mediaURL
         return cell
     }
