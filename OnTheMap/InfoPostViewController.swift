@@ -20,6 +20,7 @@ class InfoPostViewController:UIViewController
     @IBOutlet weak var topLabel: UILabel!
     @IBOutlet weak var middleView: UIView!
     @IBOutlet weak var mapURLText: UITextField!
+    @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var locationText: UITextField!
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var findButton: UIButton!
@@ -84,6 +85,7 @@ class InfoPostViewController:UIViewController
                         {
                             self.placemark = results![0]
                             self.initializeScreen(2)
+                            self.stopActivity()
                             self.mapView.showAnnotations([MKPlacemark(placemark: self.placemark!)], animated: true)
                         }
                     })
@@ -109,12 +111,16 @@ class InfoPostViewController:UIViewController
     {
         self.activityIndicator.hidden = false
         self.activityIndicator.startAnimating()
+        self.findButton.enabled = false
+        self.cancelButton.enabled = false
     }
     
     func stopActivity()
     {
         self.activityIndicator.hidden = true
         self.activityIndicator.stopAnimating()
+        self.findButton.enabled = true
+        self.cancelButton.enabled = true
     }
     
     func displayAlert(message: String, completionHandler: ((UIAlertAction) -> Void)? = nil)

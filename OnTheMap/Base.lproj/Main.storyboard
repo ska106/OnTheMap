@@ -154,6 +154,7 @@
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="RHU-yK-aeK" id="xa9-Yv-KPP"/>
+                        <outlet property="cancelButton" destination="edu-ck-5h8" id="o2X-AJ-BUk"/>
                         <outlet property="findButton" destination="taT-4D-jQL" id="r8e-zf-YRY"/>
                         <outlet property="locationText" destination="WAb-gu-LS9" id="c1I-V1-LvV"/>
                         <outlet property="mapURLText" destination="mnG-Je-eDe" id="rcb-sn-EoT"/>
