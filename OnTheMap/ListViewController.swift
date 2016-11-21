@@ -14,6 +14,9 @@ class ListViewController:UIViewController, UITableViewDataSource, UITableViewDel
     var parseClient:ParseClient!
     var udClient:UdacityClient!
     
+    @IBOutlet weak var logoutButton: UIBarButtonItem!
+    @IBOutlet weak var postButton: UIBarButtonItem!
+    @IBOutlet weak var refreshButton: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad()
@@ -35,11 +38,16 @@ class ListViewController:UIViewController, UITableViewDataSource, UITableViewDel
     @IBAction func performLogout(sender: AnyObject)
     {
         print(">>>ListViewController.performLogout")
+        self.enableButtons(false)
         udClient.logout { (success, errorMessage) in
             if success == true
             {
                 let loginVC = self.storyboard?.instantiateViewControllerWithIdentifier("LoginVC") as! LoginViewController
                 self.presentViewController(loginVC,animated: true, completion: nil)
+            }
+            else
+            {
+                self.enableButtons()
             }
         }
     }
@@ -48,6 +56,15 @@ class ListViewController:UIViewController, UITableViewDataSource, UITableViewDel
     {
         print(">>>ListViewController.performRefresh")
         self.loadData()
+    }
+    
+    func enableButtons(enable:Bool = true)
+    {
+        self.logoutButton.enabled = enable
+        self.postButton.enabled = enable
+        self.refreshButton.enabled = enable
+        self.tabBarController?.tabBar.items![0].enabled = enable
+        self.tabBarController?.tabBar.items![1].enabled = enable
     }
     
     func loadData()

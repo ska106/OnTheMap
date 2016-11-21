@@ -24,7 +24,10 @@ import MapKit
 class MapViewController : UIViewController, MKMapViewDelegate
 {
     
+    @IBOutlet weak var logoutButton: UIBarButtonItem!
+    @IBOutlet weak var refreshButton: UIBarButtonItem!
     @IBOutlet weak var mapview: MKMapView!
+    @IBOutlet weak var postButton: UIBarButtonItem!
     
     var parseClient : ParseClient!
     var udClient : UdacityClient!
@@ -43,11 +46,17 @@ class MapViewController : UIViewController, MKMapViewDelegate
     @IBAction func performLogout(sender: AnyObject)
     {
         print(">>> MapViewController.performLogout")
+        self.enableButtons(false)
+        
         udClient.logout { (success, errorMessage) in
             if success == true
             {
                 let loginVC = self.storyboard?.instantiateViewControllerWithIdentifier("LoginVC") as! LoginViewController
                 self.presentViewController(loginVC,animated: true, completion: nil)
+            }
+            else
+            {
+                self.enableButtons()
             }
         }
     }
@@ -56,6 +65,15 @@ class MapViewController : UIViewController, MKMapViewDelegate
     {
         print(">>> MapViewController.performRefresh")
         self.loadData()
+    }
+    
+    func enableButtons(enable:Bool = true)
+    {
+        self.logoutButton.enabled = enable
+        self.postButton.enabled = enable
+        self.refreshButton.enabled = enable
+        self.tabBarController?.tabBar.items![0].enabled = enable
+        self.tabBarController?.tabBar.items![1].enabled = enable
     }
     
     func loadData()

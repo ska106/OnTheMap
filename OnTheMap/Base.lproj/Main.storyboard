@@ -222,7 +222,10 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" image="map" id="Cng-xs-1j1"/>
                     <connections>
+                        <outlet property="logoutButton" destination="t3I-yt-xlL" id="iFZ-tc-9ae"/>
                         <outlet property="mapview" destination="4hQ-YL-FdR" id="Us6-1C-hgQ"/>
+                        <outlet property="postButton" destination="XGh-DJ-Gsy" id="7MV-kt-hz9"/>
+                        <outlet property="refreshButton" destination="HQq-Zl-cGi" id="krl-gg-4pV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1r9-Fl-SPe" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -308,6 +311,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="List" image="list" id="Rjh-7f-wOX"/>
                     <connections>
+                        <outlet property="logoutButton" destination="z4K-XP-laV" id="JAo-QV-cPb"/>
+                        <outlet property="postButton" destination="ctn-iS-oYB" id="24K-h1-Tpd"/>
+                        <outlet property="refreshButton" destination="41e-5x-eMd" id="Cl8-HU-XAr"/>
                         <outlet property="tableView" destination="geL-M0-n8o" id="IIJ-7O-fSA"/>
                     </connections>
                 </viewController>
