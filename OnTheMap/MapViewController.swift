@@ -36,13 +36,36 @@ class MapViewController : UIViewController, MKMapViewDelegate
         //Get the singleton instances of the API clients.
         parseClient = ParseClient.sharedInstance
         udClient = UdacityClient.sharedInstance
+        self.loadData()
         
+    }
+   
+    @IBAction func performLogout(sender: AnyObject)
+    {
+        print(">>> MapViewController.performLogout")
+        udClient.logout { (success, errorMessage) in
+            if success == true
+            {
+                let loginVC = self.storyboard?.instantiateViewControllerWithIdentifier("LoginVC") as! LoginViewController
+                self.presentViewController(loginVC,animated: true, completion: nil)
+            }
+        }
+    }
+    
+    @IBAction func performRefresh(sender: AnyObject)
+    {
+        print(">>> MapViewController.performRefresh")
+        self.loadData()
+    }
+    
+    func loadData()
+    {
         parseClient.getStudentLocations() { success, errorMessage in
             
             // We will create an MKPointAnnotation for each dictionary in "locations". The
             // point annotations will be stored in this array, and then provided to the map view.
             var annotations = [MKPointAnnotation]()
-          
+            
             if success
             {
                 //On Success
@@ -70,10 +93,7 @@ class MapViewController : UIViewController, MKMapViewDelegate
                 print("Error has occurred when invoking the ParseClient to fetch StudentLocations.")
                 //Ref: http://stackoverflow.com/questions/24022479/how-would-i-create-a-uialertview-in-swift
                 let alert = UIAlertController(title: "Error", message: errorMessage, preferredStyle: UIAlertControllerStyle.Alert)
-                let dismissAction = UIAlertAction(title: "OK", style: .Default)
-                { (action) in
-                }
-                
+                let dismissAction = UIAlertAction(title: "OK", style: .Default,handler: nil)
                 alert.addAction(dismissAction)
                 dispatch_async(dispatch_get_main_queue())
                 {
@@ -88,18 +108,7 @@ class MapViewController : UIViewController, MKMapViewDelegate
             }
         }
     }
-   
-    @IBAction func performLogout(sender: AnyObject)
-    {
-        print(">>>MapViewController.performLogout")
-        udClient.logout { (success, errorMessage) in
-            if success == true
-            {
-                let loginVC = self.storyboard?.instantiateViewControllerWithIdentifier("LoginVC") as! LoginViewController
-                self.presentViewController(loginVC,animated: true, completion: nil)
-            }
-        }
-    }
+    
     
     // MARK: - MKMapViewDelegate
     // Here we create a view with a "right callout accessory view". You might choose to look into other

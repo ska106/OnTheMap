@@ -29,31 +29,7 @@ class ListViewController:UIViewController, UITableViewDataSource, UITableViewDel
     override func viewWillAppear(animated:Bool)
     {
         super.viewWillAppear(animated)
-        
-        self.parseClient.getStudentLocations { (success, errorMessage) in
-            if success
-            {
-                dispatch_async(dispatch_get_main_queue())
-                {
-                    self.tableView.reloadData()
-                }
-            }
-            else
-            {
-                //Display error message
-                let alert = UIAlertController(title: "Error", message: errorMessage, preferredStyle: UIAlertControllerStyle.Alert)
-                let dismissAction = UIAlertAction(title: "OK", style: .Default)
-                {
-                    (action) in
-                }
-                alert.addAction(dismissAction)
-                dispatch_async(dispatch_get_main_queue())
-                {
-                    self.presentViewController(alert, animated: true, completion: nil)
-                }
-            }
-
-        }
+        self.loadData()
     }
         
     @IBAction func performLogout(sender: AnyObject)
@@ -68,6 +44,38 @@ class ListViewController:UIViewController, UITableViewDataSource, UITableViewDel
         }
     }
    
+    @IBAction func performRefresh(sender: AnyObject)
+    {
+        print(">>>ListViewController.performRefresh")
+        self.loadData()
+    }
+    
+    func loadData()
+    {
+        self.parseClient.getStudentLocations { (success, errorMessage) in
+            if success
+            {
+                dispatch_async(dispatch_get_main_queue())
+                {
+                    self.tableView.reloadData()
+                }
+            }
+            else
+            {
+                //Display error message
+                let alert = UIAlertController(title: "Error", message: errorMessage, preferredStyle: UIAlertControllerStyle.Alert)
+                let dismissAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+                alert.addAction(dismissAction)
+                dispatch_async(dispatch_get_main_queue())
+                {
+                    self.presentViewController(alert, animated: true, completion: nil)
+                }
+            }
+            
+        }
+    }
+    
+    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
         let student = parseClient.studentLocations[indexPath.row]
