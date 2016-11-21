@@ -127,7 +127,7 @@
                                     <constraint firstItem="bCj-an-tmX" firstAttribute="centerY" secondItem="gmW-29-X8M" secondAttribute="centerY" id="vCj-yZ-gQs"/>
                                 </constraints>
                             </view>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="RHU-yK-aeK">
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="RHU-yK-aeK">
                                 <rect key="frame" x="290" y="290" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
@@ -138,11 +138,13 @@
                             <constraint firstItem="aPP-lk-Cb6" firstAttribute="trailing" secondItem="YCW-r1-ekP" secondAttribute="trailing" id="6hB-pa-PwV"/>
                             <constraint firstItem="aPP-lk-Cb6" firstAttribute="top" secondItem="Ikp-Ml-RHA" secondAttribute="top" id="7hx-Cw-Ss1"/>
                             <constraint firstAttribute="trailing" secondItem="aPP-lk-Cb6" secondAttribute="trailing" id="Av1-j5-wxU"/>
+                            <constraint firstItem="RHU-yK-aeK" firstAttribute="centerY" secondItem="Ikp-Ml-RHA" secondAttribute="centerY" id="Iq2-5t-GSf"/>
                             <constraint firstItem="YCW-r1-ekP" firstAttribute="bottom" secondItem="Ohk-72-ZbP" secondAttribute="bottom" id="J1J-ex-xoy"/>
                             <constraint firstItem="YCW-r1-ekP" firstAttribute="top" secondItem="aPP-lk-Cb6" secondAttribute="bottom" constant="1" id="KrQ-FY-NUl"/>
                             <constraint firstItem="YCW-r1-ekP" firstAttribute="trailing" secondItem="Ohk-72-ZbP" secondAttribute="trailing" id="MkP-Jk-1fF"/>
                             <constraint firstItem="Ohk-72-ZbP" firstAttribute="top" secondItem="Ikp-Ml-RHA" secondAttribute="top" constant="131" id="PoJ-yq-WO0"/>
                             <constraint firstItem="YCW-r1-ekP" firstAttribute="top" secondItem="Ohk-72-ZbP" secondAttribute="top" id="RZu-gz-gz6"/>
+                            <constraint firstItem="RHU-yK-aeK" firstAttribute="centerX" secondItem="Ikp-Ml-RHA" secondAttribute="centerX" id="Uar-vk-mNV"/>
                             <constraint firstItem="YCW-r1-ekP" firstAttribute="leading" secondItem="Ohk-72-ZbP" secondAttribute="leading" id="aic-FK-AbA"/>
                             <constraint firstItem="gmW-29-X8M" firstAttribute="bottom" secondItem="O4X-do-eB4" secondAttribute="top" id="cTc-uo-GCN"/>
                             <constraint firstItem="Ohk-72-ZbP" firstAttribute="leading" secondItem="gmW-29-X8M" secondAttribute="leading" id="p6e-z3-n3G"/>

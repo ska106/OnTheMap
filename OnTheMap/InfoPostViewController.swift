@@ -107,11 +107,13 @@ class InfoPostViewController:UIViewController
     
     func startActivity()
     {
+        self.activityIndicator.hidden = false
         self.activityIndicator.startAnimating()
     }
     
     func stopActivity()
     {
+        self.activityIndicator.hidden = true
         self.activityIndicator.stopAnimating()
     }
     
