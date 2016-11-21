@@ -135,6 +135,12 @@ class MapViewController : UIViewController, MKMapViewDelegate
         return pinView
     }
     
+    @IBAction func openInfoPostVC(sender: AnyObject)
+    {
+        let infoPostViewController = self.storyboard!.instantiateViewControllerWithIdentifier("InfoPostVC") as! InfoPostViewController
+        self.presentViewController(infoPostViewController, animated: true, completion: nil)
+    }
+    
     // This delegate method is implemented to respond to taps. It opens the system browser
     // to the URL specified in the annotationViews subtitle property.
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl)

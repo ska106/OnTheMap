@@ -53,6 +53,9 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="580" height="36"/>
                                                 <inset key="contentEdgeInsets" minX="0.0" minY="18" maxX="0.0" maxY="0.0"/>
                                                 <state key="normal" title="Cancel"/>
+                                                <connections>
+                                                    <action selector="cancelAction:" destination="MoU-ni-3XZ" eventType="touchUpInside" id="kf3-LA-Hyg"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Where are you studying today ?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AKr-d2-VzF">
                                                 <rect key="frame" x="0.0" y="44" width="580" height="61"/>
@@ -154,7 +157,7 @@
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="RHU-yK-aeK" id="xa9-Yv-KPP"/>
-                        <outlet property="cancelButton" destination="edu-ck-5h8" id="o2X-AJ-BUk"/>
+                        <outlet property="cancelButton" destination="edu-ck-5h8" id="z3i-sS-Jsx"/>
                         <outlet property="findButton" destination="taT-4D-jQL" id="r8e-zf-YRY"/>
                         <outlet property="locationText" destination="WAb-gu-LS9" id="c1I-V1-LvV"/>
                         <outlet property="mapURLText" destination="mnG-Je-eDe" id="rcb-sn-EoT"/>
@@ -191,7 +194,11 @@
                                         </barButtonItem>
                                         <rightBarButtonItems>
                                             <barButtonItem systemItem="refresh" id="HQq-Zl-cGi"/>
-                                            <barButtonItem image="pin" id="XGh-DJ-Gsy"/>
+                                            <barButtonItem image="pin" id="XGh-DJ-Gsy">
+                                                <connections>
+                                                    <action selector="openInfoPostVC:" destination="xyb-WZ-0FE" id="ZU0-7o-za1"/>
+                                                </connections>
+                                            </barButtonItem>
                                         </rightBarButtonItems>
                                     </navigationItem>
                                 </items>
@@ -249,7 +256,11 @@
                                                     <action selector="performRefresh:" destination="0gJ-Ta-xvt" id="GAd-eg-Kd7"/>
                                                 </connections>
                                             </barButtonItem>
-                                            <barButtonItem image="pin" id="ctn-iS-oYB"/>
+                                            <barButtonItem image="pin" id="ctn-iS-oYB">
+                                                <connections>
+                                                    <action selector="openInfoPostVC:" destination="0gJ-Ta-xvt" id="MHo-7b-6Hb"/>
+                                                </connections>
+                                            </barButtonItem>
                                         </rightBarButtonItems>
                                     </navigationItem>
                                 </items>

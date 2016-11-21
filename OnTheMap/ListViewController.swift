@@ -75,6 +75,11 @@ class ListViewController:UIViewController, UITableViewDataSource, UITableViewDel
         }
     }
     
+    @IBAction func openInfoPostVC(sender: AnyObject)
+    {
+        let infoPostViewController = self.storyboard!.instantiateViewControllerWithIdentifier("InfoPostVC") as! InfoPostViewController
+        self.presentViewController(infoPostViewController, animated: true, completion: nil)
+    }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {

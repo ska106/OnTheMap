@@ -43,9 +43,8 @@ class InfoPostViewController:UIViewController
     
     @IBAction func cancelAction(sender: AnyObject)
     {
-        if let presentingViewController = presentingViewController {
-            presentingViewController.dismissViewControllerAnimated(true, completion: nil)
-        }
+        print(">>> cancelAction()")
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     @IBAction func findAction(sender: AnyObject)
@@ -104,6 +103,9 @@ class InfoPostViewController:UIViewController
         }
         else
         {
+            self.startActivity()
+            //placemark?.location?.coordinate.latitude
+            //placemark.location?.coordinate.longitude
         }
     }
     
@@ -113,6 +115,7 @@ class InfoPostViewController:UIViewController
         self.activityIndicator.startAnimating()
         self.findButton.enabled = false
         self.cancelButton.enabled = false
+        self.submitButton.enabled = false
     }
     
     func stopActivity()
@@ -121,6 +124,7 @@ class InfoPostViewController:UIViewController
         self.activityIndicator.stopAnimating()
         self.findButton.enabled = true
         self.cancelButton.enabled = true
+        self.submitButton.enabled = true
     }
     
     func displayAlert(message: String, completionHandler: ((UIAlertAction) -> Void)? = nil)
