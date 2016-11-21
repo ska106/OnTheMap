@@ -50,7 +50,8 @@ class InfoPostViewController:UIViewController
     @IBAction func findAction(sender: AnyObject)
     {
         print(">>> findAction()")
-        if (self.locationText.text != nil && self.locationText.text != "")
+        print(self.locationText.text)
+        if (self.locationText.text == nil || self.locationText.text == "")
         {
             self.displayAlert("Please enter a location.")
         }
@@ -62,7 +63,7 @@ class InfoPostViewController:UIViewController
     @IBAction func submitAction(sender: AnyObject)
     {
         print (">>> submitAction(()")
-        if (self.mapURLText.text != nil && self.mapURLText.text != "")
+        if (self.mapURLText.text == nil || self.mapURLText.text == "")
         {
             self.displayAlert("Please enter a location.")
         }
