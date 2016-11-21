@@ -64,6 +64,7 @@ class LoginViewController : UIViewController
                 if errorMessage == UdacityClient.Errors.loginError
                 {
                     print (errorMessage)
+                    self.displayAlert("Login error, please try again.")
                 }
                 
                 dispatch_async(dispatch_get_main_queue())
@@ -88,6 +89,18 @@ class LoginViewController : UIViewController
         else
         {
             activityIndicator.stopAnimating()
+        }
+    }
+    
+    func displayAlert(message: String, completionHandler: ((UIAlertAction) -> Void)? = nil)
+    {
+        dispatch_async(dispatch_get_main_queue())
+        {
+            self.loginStartActivity(false)
+            let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .Alert)
+            let okButton = UIAlertAction(title: "OK", style: .Default, handler: completionHandler)
+            alert.addAction(okButton)
+            self.presentViewController(alert, animated: true, completion: nil)
         }
     }
 }
