@@ -14,8 +14,11 @@ class InfoPostViewController:UIViewController
 {
     
     var parseClient : ParseClient!
+    var udClient : UdacityClient!
+    
     //Ref : https://developer.apple.com/reference/corelocation/clplacemark
     var placemark: CLPlacemark? = nil
+    var studentObjectId:String? = nil
     
     @IBOutlet weak var topLabel: UILabel!
     @IBOutlet weak var middleView: UIView!
@@ -33,6 +36,8 @@ class InfoPostViewController:UIViewController
         
         //Get the singleton instances of the API clients.
         parseClient = ParseClient.sharedInstance
+        udClient = UdacityClient.sharedInstance
+        
         initializeScreen()
     }
     
@@ -96,16 +101,53 @@ class InfoPostViewController:UIViewController
     @IBAction func submitAction(sender: AnyObject)
     {
         print (">>> submitAction(()")
+        self.startActivity()
         if (self.mapURLText.text == nil || self.mapURLText.text == "")
         {
             self.displayAlert("Please enter a location.")
+            self.stopActivity()
             return
         }
         else
         {
-            self.startActivity()
-            //placemark?.location?.coordinate.latitude
-            //placemark.location?.coordinate.longitude
+            let id = udClient.uniqueId == nil ? "":udClient.uniqueId
+            
+            let updatedStud:[String:AnyObject] = ["firstName" : udClient.userFirstName,
+                                                  "lastName" : udClient.userLastName,
+                                                  "uniqueKey" : id!,
+                                                  "mapString" : self.mapURLText!.text!,
+                                                  "mediaURL" : self.locationText!.text!,
+                                                  "longitude" : (self.placemark!.location?.coordinate.longitude)!,
+                                                  "latitude" : (self.placemark!.location?.coordinate.latitude)!]
+ 
+            if !((id?.isEmpty)!)
+            {
+                parseClient.updateStudentLocation(udClient.userObjectId!, studentData: updatedStud, completionHandler: { (success, errorMessage) in
+                    if (success)
+                    {
+                        print ("Data has been updated.")
+                    }
+                    else
+                    {
+                        self.displayAlert("Error occurred : \(errorMessage)" )
+                    }
+                })
+            }
+            else
+            {
+                parseClient.postStudentLocation(updatedStud, completionHandler: { (success, errorMessage) in
+                    if (success)
+                    {
+                        print ("Data has been updated.")
+                    }
+                    else
+                    {
+                        self.displayAlert("Error occurred : \(errorMessage)" )
+                    }
+                })
+            }
+            
+            self.stopActivity()
         }
     }
     

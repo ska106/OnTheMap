@@ -10,19 +10,15 @@ import Foundation
 
 class UdacityClient : NSObject
 {
-    var userId: String = ""
+    var userObjectId: String?
     var userFirstName: String = ""
     var userLastName: String = ""
+    var uniqueId:String?
     
     var session = NSURLSession.sharedSession()
     
     // MARK: Singleton Pattern
     static let sharedInstance = UdacityClient()
-    
-    private override init()
-    {
-        super.init()
-    }
     
     // MARK : Prepare the HTTP header for the request.
     func setHeaders(request: NSMutableURLRequest) -> NSMutableURLRequest
@@ -95,8 +91,13 @@ class UdacityClient : NSObject
                     //Step 2. Parse out the Key Node (aka user-ID)
                     if let userId = account.valueForKey(JSONResponseKey.key) as? String
                     {
-                        self.userId = userId
-                        print("UserID : " + self.userId)
+                        self.userObjectId = userId
+                        print("UserID : " + self.userObjectId!)
+                        
+                        if let uniqueId = account.valueForKey(JSONResponseKey.id) as? String
+                        {
+                           self.uniqueId = uniqueId
+                        }
                         // Get User Info based on the user ID above.
                         self.getStudentInfo(userId, completionHandlerForStudentInfo: { (success, errorMessage) in
                             if (success)

@@ -139,7 +139,8 @@ class ParseClient : NSObject
     func postStudentLocation (studentData: [String:AnyObject], completionHandler:(success: Bool, errorMessage  : String?) -> Void)
     {
         //Initialize the Request to invoke API.
-        let request = NSMutableURLRequest(URL:getMethodURL(Methods.studentLocation))
+        var request = NSMutableURLRequest(URL:getMethodURL(Methods.studentLocation))
+        request = setHeaders(request, setJson: true)
         request.HTTPMethod = "POST"
         request.HTTPBody = Converter.toNSData(studentData)
         makeTaskCall(request) { (result, error) in
@@ -160,7 +161,8 @@ class ParseClient : NSObject
     func updateStudentLocation (objectId: String, studentData : [String:AnyObject], completionHandler:(success: Bool, errorMessage: String?) -> Void)
     {
         //Initialize the Request to invoke API.
-        let request = NSMutableURLRequest(URL:getMethodURLForPut(Methods.studentLocation, id: objectId))
+        var request = NSMutableURLRequest(URL:getMethodURLForPut(Methods.studentLocation, id: objectId))
+        request = setHeaders(request, setJson: true)
         request.HTTPMethod = "PUT"
         request.HTTPBody = Converter.toNSData(studentData)
         makeTaskCall(request) { (result, error) in
