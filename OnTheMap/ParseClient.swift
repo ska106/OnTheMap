@@ -52,6 +52,11 @@ class ParseClient : NSObject
         return NSURL(string: BaseURL.API + resourceName + "/" + id)!;
     }
     
+    // MARK : This method forms the URL such that the app will download 100 most recent locations posted by students.
+    func getMethodURLForOrderedLocations (resourceName : String) -> NSURL
+    {
+        return NSURL(string: BaseURL.API + resourceName + "?limit=100&order=-updatedAt" )!;
+    }
     
     // MARK : Function to initiate the API call via. Task.
     func makeTaskCall (request:NSURLRequest , completionHandlerForTaskCall : (result : AnyObject? , error: NSError?) -> Void)
@@ -81,7 +86,7 @@ class ParseClient : NSObject
     func getStudentLocations (completionHandlerForStudentLocations: (success: Bool,errorMessage : String?)->Void)
     {
         //Initialize the Request to invoke API.
-        var request = NSMutableURLRequest(URL:getMethodURL(Methods.studentLocation))
+        var request = NSMutableURLRequest(URL:getMethodURLForOrderedLocations(Methods.studentLocation))
         request = setHeaders(request, setJson: false)
         makeTaskCall(request) { (result, error) in
             if error == nil
@@ -90,6 +95,7 @@ class ParseClient : NSObject
                 if let results = result?.valueForKey(JSONResponseKey.results) as? [[String:AnyObject]]
                 {
                     self.studentLocations = StudentInformation.getLocationsFromResults(results)
+                    print ("Number of Students Loaded : " + String(self.studentLocations.count))
                     completionHandlerForStudentLocations(success: true,errorMessage: nil)
                 }
                 else
