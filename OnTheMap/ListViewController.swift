@@ -112,12 +112,6 @@ class ListViewController:UIViewController, UITableViewDataSource, UITableViewDel
         }
     }
     
-    //MARK : We are going to have only 1 section in this table.
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int
-    {
-        return 1
-    }
-    
     //MARK : Function that determines the number for Rows in the table. This will be dependent on the record set fetched
     //       by the parseClient --> StudentLocations[]
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
