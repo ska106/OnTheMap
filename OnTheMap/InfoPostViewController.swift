@@ -113,7 +113,7 @@ class InfoPostViewController:UIViewController, UITextFieldDelegate
         startActivity()
         if (mapURLText.text == nil || mapURLText.text == "")
         {
-            displayAlert("Please enter a location.")
+            displayAlert("Please enter URL.")
             startActivity(false)
             return
         }
@@ -139,7 +139,7 @@ class InfoPostViewController:UIViewController, UITextFieldDelegate
                     }
                     else
                     {
-                        self.displayAlert("Error occurred : \(errorMessage)" )
+                        self.displayAlert("Error occurred when posting information." )
                     }
                 })
             }
@@ -153,7 +153,8 @@ class InfoPostViewController:UIViewController, UITextFieldDelegate
                     }
                     else
                     {
-                        self.displayAlert("Error occurred : \(errorMessage)" )
+                        print ("Error Occurred when posting information : " + errorMessage!)
+                        self.displayAlert("Error occurred when posting information. Please check your internet connection too." )
                     }
                 })
             }
