@@ -1,4 +1,3 @@
-//
 //  ParseConstants.swift
 //  OnTheMap
 //
