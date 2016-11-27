@@ -64,7 +64,7 @@ struct StudentInformation
             studentInfo.longitude == nil ||
             studentInfo.objectId == nil
         {
-            print("Nil Value Found, record must be rejected.")
+            //print("Nil Value Found, record must be rejected.")
             hasNil = true
         }
         return hasNil
