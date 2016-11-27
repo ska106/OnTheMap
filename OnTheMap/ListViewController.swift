@@ -31,13 +31,13 @@ class ListViewController:UIViewController, UITableViewDataSource, UITableViewDel
     override func viewWillAppear(animated:Bool)
     {
         super.viewWillAppear(animated)
-        self.loadData()
+        loadData()
     }
         
     @IBAction func performLogout(sender: AnyObject)
     {
-        print(">>>ListViewController.performLogout")
-        self.enableButtons(false)
+        //print(">>>ListViewController.performLogout")
+        enableButtons(false)
         udClient.logout { (success, errorMessage) in
             if success == true
             {
@@ -53,22 +53,22 @@ class ListViewController:UIViewController, UITableViewDataSource, UITableViewDel
    
     @IBAction func performRefresh(sender: AnyObject)
     {
-        print(">>>ListViewController.performRefresh")
-        self.loadData()
+        //print(">>>ListViewController.performRefresh")
+        loadData()
     }
     
     func enableButtons(enable:Bool = true)
     {
-        self.logoutButton.enabled = enable
-        self.postButton.enabled = enable
-        self.refreshButton.enabled = enable
-        self.tabBarController?.tabBar.items![0].enabled = enable
-        self.tabBarController?.tabBar.items![1].enabled = enable
+        logoutButton.enabled = enable
+        postButton.enabled = enable
+        refreshButton.enabled = enable
+        tabBarController?.tabBar.items![0].enabled = enable
+        tabBarController?.tabBar.items![1].enabled = enable
     }
     
     func loadData()
     {
-        self.parseClient.getStudentLocations { (success, errorMessage) in
+        parseClient.getStudentLocations { (success, errorMessage) in
             if success
             {
                 dispatch_async(dispatch_get_main_queue())
@@ -93,8 +93,8 @@ class ListViewController:UIViewController, UITableViewDataSource, UITableViewDel
     
     @IBAction func openInfoPostVC(sender: AnyObject)
     {
-        let infoPostViewController = self.storyboard!.instantiateViewControllerWithIdentifier("InfoPostVC") as! InfoPostViewController
-        self.presentViewController(infoPostViewController, animated: true, completion: nil)
+        let infoPostViewController = storyboard!.instantiateViewControllerWithIdentifier("InfoPostVC") as! InfoPostViewController
+        presentViewController(infoPostViewController, animated: true, completion: nil)
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
@@ -108,7 +108,7 @@ class ListViewController:UIViewController, UITableViewDataSource, UITableViewDel
         }
         else
         {
-            print("ERROR: Invalid url")
+            //print("ERROR: Invalid url")
         }
     }
     

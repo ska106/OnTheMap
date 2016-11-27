@@ -32,9 +32,9 @@ class LoginViewController : UIViewController
     override func viewWillAppear(animated: Bool)
     {
         super.viewWillAppear(animated)
-        self.activityIndicator.hidden = true
-        self.email.text=""
-        self.password.text = ""
+        activityIndicator.hidden = true
+        email.text=""
+        password.text = ""
     }
     
     @IBAction func tapUdacitySignup(sender: AnyObject)
@@ -44,10 +44,10 @@ class LoginViewController : UIViewController
     
     @IBAction func loginUdacity(sender: AnyObject)
     {
-        print(">>> loginUdacity ")
-        self.loginStartActivity(true)
+        //print(">>> loginUdacity ")
+        loginStartActivity(true)
         udClient.loginWithCredentials(email.text!, password: password.text!) { (success, errorMessage) in
-            print ("In loginWithCredentials completionHandler ")
+            //print ("In loginWithCredentials completionHandler ")
             if (success)
             {
                 dispatch_async(dispatch_get_main_queue())
@@ -63,14 +63,14 @@ class LoginViewController : UIViewController
                 //TODO: Stay on the same page and display error message.
                 if errorMessage == UdacityClient.Errors.loginError
                 {
-                    print ("Login Error Message : " + errorMessage!)
+                    //print ("Login Error Message : " + errorMessage!)
                     self.displayAlert("Login error, please try again.")
                     
                 }
                 
                 else if errorMessage == UdacityClient.Errors.connectionError
                 {
-                    print ("Login Error Message : " + errorMessage!)
+                    //print ("Login Error Message : " + errorMessage!)
                     self.displayAlert("Unable to connect to the internet.")
                     
                 }

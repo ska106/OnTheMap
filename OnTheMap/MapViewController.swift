@@ -39,18 +39,18 @@ class MapViewController : UIViewController, MKMapViewDelegate
         //Get the singleton instances of the API clients.
         parseClient = ParseClient.sharedInstance
         udClient = UdacityClient.sharedInstance
-        self.loadData()
+        loadData()
     }
     
     override func viewDidAppear(animated: Bool)
     {
         super.viewDidAppear(animated)
-        self.loadData()
+        loadData()
     }
    
     @IBAction func performLogout(sender: AnyObject)
     {
-        print(">>> MapViewController.performLogout")
+        //print(">>> MapViewController.performLogout")
         self.enableButtons(false)
         
         udClient.logout { (success, errorMessage) in
@@ -68,17 +68,17 @@ class MapViewController : UIViewController, MKMapViewDelegate
     
     @IBAction func performRefresh(sender: AnyObject)
     {
-        print(">>> MapViewController.performRefresh")
-        self.loadData()
+        //print(">>> MapViewController.performRefresh")
+        loadData()
     }
     
     func enableButtons(enable:Bool = true)
     {
-        self.logoutButton.enabled = enable
-        self.postButton.enabled = enable
-        self.refreshButton.enabled = enable
-        self.tabBarController?.tabBar.items![0].enabled = enable
-        self.tabBarController?.tabBar.items![1].enabled = enable
+        logoutButton.enabled = enable
+        postButton.enabled = enable
+        refreshButton.enabled = enable
+        tabBarController?.tabBar.items![0].enabled = enable
+        tabBarController?.tabBar.items![1].enabled = enable
     }
     
     func loadData()
@@ -113,7 +113,7 @@ class MapViewController : UIViewController, MKMapViewDelegate
             else
             {
                 //Failure
-                print("Error has occurred when invoking the ParseClient to fetch StudentLocations.")
+                //print("Error has occurred when invoking the ParseClient to fetch StudentLocations.")
                 //Ref: http://stackoverflow.com/questions/24022479/how-would-i-create-a-uialertview-in-swift
                 let alert = UIAlertController(title: "Error", message: errorMessage, preferredStyle: UIAlertControllerStyle.Alert)
                 let dismissAction = UIAlertAction(title: "OK", style: .Default,handler: nil)
@@ -175,7 +175,7 @@ class MapViewController : UIViewController, MKMapViewDelegate
 
     @IBAction func openInfoPostVC(sender: AnyObject)
     {
-        let infoPostViewController = self.storyboard!.instantiateViewControllerWithIdentifier("InfoPostVC") as! InfoPostViewController
-        self.presentViewController(infoPostViewController, animated: true, completion: nil)
+        let infoPostViewController = storyboard!.instantiateViewControllerWithIdentifier("InfoPostVC") as! InfoPostViewController
+        presentViewController(infoPostViewController, animated: true, completion: nil)
     }
 }

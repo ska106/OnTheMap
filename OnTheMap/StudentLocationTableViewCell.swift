@@ -16,7 +16,7 @@ class StudentLocationTableViewCell : UITableViewCell
     
     func configureTableCell (student:StudentInformation)
     {
-        self.pinView.image = UIImage(named: "pin")
-        self.fullName.text = student.getFullName()
+        pinView.image = UIImage(named: "pin")
+        fullName.text = student.fullname
     }
 }

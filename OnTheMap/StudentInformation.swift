@@ -20,23 +20,19 @@ struct StudentInformation
     var mediaURL : String?
     var longitude : Double?
     var latitude : Double?
+    var fullname : String {return "\(firstName) \(lastName)"}
     
     //As per the rubic cube the struct must have an init method that accepts a dictionary as an argument.
     init(parseResult: [String:AnyObject])
     {
-        self.objectId = parseResult["objectId"] as? String
-        self.uniqueId = parseResult["uniqueKey"] as? String
-        self.firstName = parseResult["firstName"] as? String
-        self.lastName = parseResult["lastName"] as? String
-        self.mapString = parseResult["mapString"] as? String
-        self.mediaURL = parseResult["mediaURL"] as? String
-        self.longitude = parseResult["longitude"] as? Double
-        self.latitude = parseResult["latitude"] as? Double
-    }
-    
-    func getFullName()->String
-    {
-        return self.firstName! + " " + self.lastName!
+        objectId = parseResult["objectId"] as? String
+        uniqueId = parseResult["uniqueKey"] as? String
+        firstName = parseResult["firstName"] as? String
+        lastName = parseResult["lastName"] as? String
+        mapString = parseResult["mapString"] as? String
+        mediaURL = parseResult["mediaURL"] as? String
+        longitude = parseResult["longitude"] as? Double
+        latitude = parseResult["latitude"] as? Double
     }
     
     //MARK : This method will convert the dictionary of StudentInformation into an Array of StudentInformation, which will later be used in creating the pins
@@ -64,7 +60,7 @@ struct StudentInformation
             studentInfo.longitude == nil ||
             studentInfo.objectId == nil
         {
-            //print("Nil Value Found, record must be rejected.")
+            ////print("Nil Value Found, record must be rejected.")
             hasNil = true
         }
         return hasNil

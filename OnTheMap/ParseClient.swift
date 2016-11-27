@@ -95,7 +95,7 @@ class ParseClient : NSObject
                 if let results = result?.valueForKey(JSONResponseKey.results) as? [[String:AnyObject]]
                 {
                     self.studentLocations = StudentInformation.getLocationsFromResults(results)
-                    print ("Number of Students Loaded : " + String(self.studentLocations.count))
+                    //print ("Number of Students Loaded : " + String(self.studentLocations.count))
                     completionHandlerForStudentLocations(success: true,errorMessage: nil)
                 }
                 else

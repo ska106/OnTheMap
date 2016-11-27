@@ -40,8 +40,8 @@ class InfoPostViewController:UIViewController, UITextFieldDelegate
         
         initializeScreen()
         
-        self.locationText.delegate = self
-        self.mapURLText.delegate = self
+        locationText.delegate = self
+        mapURLText.delegate = self
     }
     
     override func viewWillAppear(animated: Bool)
@@ -51,8 +51,8 @@ class InfoPostViewController:UIViewController, UITextFieldDelegate
     
     @IBAction func cancelAction(sender: AnyObject)
     {
-        print(">>> cancelAction()")
-        self.dismissViewControllerAnimated(true, completion: nil)
+        //print(">>> cancelAction()")
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool
@@ -63,16 +63,16 @@ class InfoPostViewController:UIViewController, UITextFieldDelegate
     
     @IBAction func findAction(sender: AnyObject)
     {
-        print(">>> findAction()")
-        print(self.locationText.text)
-        if (self.locationText.text == nil || self.locationText.text == "")
+        //print(">>> findAction()")
+        //print(locationText.text)
+        if (locationText.text == nil || locationText.text == "")
         {
-            self.displayAlert("Please enter a location.")
+            displayAlert("Please enter a location.")
             return
         }
         else
         {
-            self.startActivity()
+            startActivity()
             let LOC_NOT_FOUND = "Could not find location entered. Please retry."
             // put in a delay.
             let delayInSeconds = 1.25
@@ -110,11 +110,11 @@ class InfoPostViewController:UIViewController, UITextFieldDelegate
     @IBAction func submitAction(sender: AnyObject)
     {
         print (">>> submitAction(()")
-        self.startActivity()
-        if (self.mapURLText.text == nil || self.mapURLText.text == "")
+        startActivity()
+        if (mapURLText.text == nil || mapURLText.text == "")
         {
-            self.displayAlert("Please enter a location.")
-            self.startActivity(false)
+            displayAlert("Please enter a location.")
+            startActivity(false)
             return
         }
         else
@@ -124,10 +124,10 @@ class InfoPostViewController:UIViewController, UITextFieldDelegate
             let updatedStud:[String:AnyObject] = ["firstName" : udClient.userFirstName,
                                                   "lastName" : udClient.userLastName,
                                                   "uniqueKey" : id!,
-                                                  "mapString" : self.mapURLText!.text!,
-                                                  "mediaURL" : self.locationText!.text!,
-                                                  "longitude" : (self.placemark!.location?.coordinate.longitude)!,
-                                                  "latitude" : (self.placemark!.location?.coordinate.latitude)!]
+                                                  "mapString" : mapURLText!.text!,
+                                                  "mediaURL" : locationText!.text!,
+                                                  "longitude" : (placemark!.location?.coordinate.longitude)!,
+                                                  "latitude" : (placemark!.location?.coordinate.latitude)!]
  
             if !((id?.isEmpty)!)
             {
@@ -148,7 +148,7 @@ class InfoPostViewController:UIViewController, UITextFieldDelegate
                 parseClient.postStudentLocation(updatedStud, completionHandler: { (success, errorMessage) in
                     if (success)
                     {
-                        print ("Data has been updated.")
+                        //print ("Data has been updated.")
                         self.dismissViewControllerAnimated(true, completion: nil)
                     }
                     else
@@ -157,24 +157,24 @@ class InfoPostViewController:UIViewController, UITextFieldDelegate
                     }
                 })
             }
-            self.startActivity(false)
+            startActivity(false)
             
         }
     }
     
     func startActivity(started:Bool = true)
     {
-        self.activityIndicator.hidden = !started
-        self.findButton.enabled = !started
-        self.cancelButton.enabled = !started
-        self.submitButton.enabled = !started
+        activityIndicator.hidden = !started
+        findButton.enabled = !started
+        cancelButton.enabled = !started
+        submitButton.enabled = !started
         if (started)
         {
-            self.activityIndicator.startAnimating()
+            activityIndicator.startAnimating()
         }
         else
         {
-            self.activityIndicator.stopAnimating()
+            activityIndicator.stopAnimating()
         }
     }
     
@@ -194,23 +194,23 @@ class InfoPostViewController:UIViewController, UITextFieldDelegate
     // stageNumber = 2 : the UI components needed for the second time view
     func initializeScreen(stageNumber :Int = 1)
     {
-        self.activityIndicator.hidden = true
+        activityIndicator.hidden = true
         switch (stageNumber)
         {
             case 1 :
-                self.submitButton.hidden = true
-                self.findButton.hidden = false
-                self.locationText.hidden = false
-                self.middleView.hidden = false
-                self.mapURLText.hidden = true
-                self.topLabel.text = "Where are you studying today ?"
+                submitButton.hidden = true
+                findButton.hidden = false
+                locationText.hidden = false
+                middleView.hidden = false
+                mapURLText.hidden = true
+                topLabel.text = "Where are you studying today ?"
             case 2 :
-                self.submitButton.hidden = false
-                self.findButton.hidden = true
-                self.locationText.hidden = true
-                self.middleView.hidden = true
-                self.mapURLText.hidden = false
-                self.topLabel.text = "Enter a URL for your location."
+                submitButton.hidden = false
+                findButton.hidden = true
+                locationText.hidden = true
+                middleView.hidden = true
+                mapURLText.hidden = false
+                topLabel.text = "Enter a URL for your location."
             default: break
         }
     }
