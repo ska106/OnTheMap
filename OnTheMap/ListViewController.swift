@@ -108,7 +108,7 @@ class ListViewController:UIViewController, UITableViewDataSource, UITableViewDel
         }
         else
         {
-            //print("ERROR: Invalid url")
+            print("ERROR: Invalid url : " + student.mediaURL!)
         }
     }
     

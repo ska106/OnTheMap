@@ -13,7 +13,6 @@ class UdacityClient
     var userObjectId: String?
     var userFirstName: String = ""
     var userLastName: String = ""
-    var uniqueId:String?
     
     var session = NSURLSession.sharedSession()
     
@@ -94,10 +93,6 @@ class UdacityClient
                         self.userObjectId = userId
                         //print("UserID : " + userObjectId!)
                         
-                        if let uniqueId = account.valueForKey(JSONResponseKey.id) as? String
-                        {
-                           self.uniqueId = uniqueId
-                        }
                         // Get User Info based on the user ID above.
                         self.getStudentInfo(userId, completionHandlerForStudentInfo: { (success, errorMessage) in
                             if (success)

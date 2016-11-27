@@ -280,7 +280,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ax8-Qa-jMd">
-                                                    <rect key="frame" x="90" y="8" width="0.0" height="36"/>
+                                                    <rect key="frame" x="90" y="8" width="429" height="36"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="429" id="gD9-X0-jKc"/>
                                                     </constraints>
@@ -290,20 +290,16 @@
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7ET-lX-Pad">
                                                     <rect key="frame" x="23" y="8" width="35" height="40"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="40" id="Gin-YX-bOX"/>
-                                                        <constraint firstAttribute="width" constant="35" id="wFa-dM-hT6"/>
-                                                    </constraints>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottomMargin" secondItem="ax8-Qa-jMd" secondAttribute="bottom" constant="5.5" id="4uF-hj-WER"/>
-                                                <constraint firstItem="ax8-Qa-jMd" firstAttribute="leading" secondItem="7ET-lX-Pad" secondAttribute="trailing" constant="32" id="Jmv-Nq-jzP"/>
-                                                <constraint firstItem="7ET-lX-Pad" firstAttribute="top" secondItem="ax8-Qa-jMd" secondAttribute="top" id="QoI-Gr-KUX"/>
-                                                <constraint firstItem="7ET-lX-Pad" firstAttribute="centerY" secondItem="4qB-HX-g7o" secondAttribute="centerY" id="Ug0-k5-EI3"/>
-                                                <constraint firstItem="7ET-lX-Pad" firstAttribute="leading" secondItem="4qB-HX-g7o" secondAttribute="leadingMargin" constant="15" id="kkI-oc-FA2"/>
-                                                <constraint firstItem="ax8-Qa-jMd" firstAttribute="top" secondItem="4qB-HX-g7o" secondAttribute="topMargin" id="o1z-hT-Lz2"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="ax8-Qa-jMd" secondAttribute="trailing" constant="69" id="rwy-Kp-GGe"/>
+                                                <constraint firstItem="7ET-lX-Pad" firstAttribute="leading" secondItem="4qB-HX-g7o" secondAttribute="leadingMargin" constant="15" id="5cv-uO-plP"/>
+                                                <constraint firstItem="ax8-Qa-jMd" firstAttribute="leading" secondItem="7ET-lX-Pad" secondAttribute="trailing" constant="32" id="Jvq-UL-FDE"/>
+                                                <constraint firstItem="7ET-lX-Pad" firstAttribute="centerY" secondItem="4qB-HX-g7o" secondAttribute="centerY" id="S8X-o6-cjg"/>
+                                                <constraint firstItem="ax8-Qa-jMd" firstAttribute="top" secondItem="4qB-HX-g7o" secondAttribute="topMargin" id="T2w-aU-0WB"/>
+                                                <constraint firstItem="ax8-Qa-jMd" firstAttribute="top" secondItem="7ET-lX-Pad" secondAttribute="top" id="fyg-Kr-Pvp"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="ax8-Qa-jMd" secondAttribute="bottom" constant="5.5" id="pbD-VA-fiH"/>
+                                                <constraint firstItem="ax8-Qa-jMd" firstAttribute="leading" secondItem="4qB-HX-g7o" secondAttribute="leading" constant="90" id="yNU-bf-2BL"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>

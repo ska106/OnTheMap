@@ -64,7 +64,6 @@ class InfoPostViewController:UIViewController, UITextFieldDelegate
     @IBAction func findAction(sender: AnyObject)
     {
         //print(">>> findAction()")
-        //print(locationText.text)
         if (locationText.text == nil || locationText.text == "")
         {
             displayAlert("Please enter a location.")
@@ -119,47 +118,56 @@ class InfoPostViewController:UIViewController, UITextFieldDelegate
         }
         else
         {
-            let id = udClient.uniqueId == nil ? "":udClient.uniqueId
-            
-            let updatedStud:[String:AnyObject] = ["firstName" : udClient.userFirstName,
-                                                  "lastName" : udClient.userLastName,
-                                                  "uniqueKey" : id!,
-                                                  "mapString" : mapURLText!.text!,
-                                                  "mediaURL" : locationText!.text!,
-                                                  "longitude" : (placemark!.location?.coordinate.longitude)!,
-                                                  "latitude" : (placemark!.location?.coordinate.latitude)!]
- 
-            if !((id?.isEmpty)!)
+            if let objectId = udClient.userObjectId
             {
-                parseClient.updateStudentLocation(udClient.userObjectId!, studentData: updatedStud, completionHandler: { (success, errorMessage) in
+                let updatedStud:[String:AnyObject] = [  "firstName" : self.udClient.userFirstName,
+                                                        "lastName" : self.udClient.userLastName,
+                                                        "uniqueKey" : self.udClient.userObjectId!,
+                                                        "mediaURL" : self.mapURLText!.text!,
+                                                        "mapString" : self.locationText!.text!,
+                                                        "longitude" : (self.placemark!.location?.coordinate.longitude)!,
+                                                        "latitude" : (self.placemark!.location?.coordinate.latitude)!]
+
+                
+                parseClient.findStudentLocation(objectId, completionHandler: { (success, errorMessage) in
                     if (success)
                     {
-                        print ("Data has been updated.")
-                        self.dismissViewControllerAnimated(true, completion: nil)
+                        if let objectId = self.parseClient.studentLocations[0].objectId
+                        {
+                            print (objectId)
+                            self.parseClient.updateStudentLocation(objectId, studentData: updatedStud, completionHandler: { (success, errorMessage) in
+                                if (success)
+                                {
+                                    print ("Data has been updated.")
+                                    self.dismissViewControllerAnimated(true, completion: nil)
+                                }
+                                else
+                                {
+                                    self.displayAlert("Error occurred when posting information." )
+                                }
+                            })
+                        }
                     }
                     else
                     {
-                        self.displayAlert("Error occurred when posting information." )
-                    }
-                })
-            }
-            else
-            {
-                parseClient.postStudentLocation(updatedStud, completionHandler: { (success, errorMessage) in
-                    if (success)
-                    {
-                        //print ("Data has been updated.")
-                        self.dismissViewControllerAnimated(true, completion: nil)
-                    }
-                    else
-                    {
-                        print ("Error Occurred when posting information : " + errorMessage!)
-                        self.displayAlert("Error occurred when posting information. Please check your internet connection too." )
+                        print ("Not able to find any parse record for the student, so posting one.")
+                        self.parseClient.postStudentLocation(self.udClient.userObjectId!, studentData: updatedStud, completionHandler: { (success, errorMessage) in
+                            if (success)
+                            {
+                                //print ("Data has been updated.")
+                                self.dismissViewControllerAnimated(true, completion: nil)
+                            }
+                            else
+                            {
+                                print ("Error Occurred when posting information : " + errorMessage!)
+                                self.displayAlert("Error occurred when posting information. Please check your internet connection too." )
+                            }
+                        })
+
                     }
                 })
             }
             startActivity(false)
-            
         }
     }
     

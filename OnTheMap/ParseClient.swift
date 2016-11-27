@@ -47,7 +47,7 @@ class ParseClient : NSObject
     }
     
     // MARK : Based on the name of the resource, construct the API URL to be invoked.
-    func getMethodURLForPut (resourceName: String, id:String) -> NSURL
+    func getMethodURLToPostInfo (resourceName: String, id:String) -> NSURL
     {
         return NSURL(string: BaseURL.API + resourceName + "/" + id)!;
     }
@@ -116,8 +116,8 @@ class ParseClient : NSObject
     func findStudentLocation (uniqueKey : String, completionHandler: (success:Bool, errorMessage: String?) -> Void)
     {
         //Initialize the Request to invoke API.
-        let request = NSMutableURLRequest(URL:getMethodURL(Methods.studentLocation,id: uniqueKey))
-        //request.HTTPMethod = "GET"
+        var request = NSMutableURLRequest(URL:getMethodURL(Methods.studentLocation,id: uniqueKey))
+        request = setHeaders(request, setJson: true)
         makeTaskCall(request) { (result, error) in
             if error == nil
             {
@@ -142,10 +142,10 @@ class ParseClient : NSObject
     }
     
     //MARK : Post a Student Location
-    func postStudentLocation (studentData: [String:AnyObject], completionHandler:(success: Bool, errorMessage  : String?) -> Void)
+    func postStudentLocation (objectId: String, studentData: [String:AnyObject], completionHandler:(success: Bool, errorMessage  : String?) -> Void)
     {
         //Initialize the Request to invoke API.
-        var request = NSMutableURLRequest(URL:getMethodURL(Methods.studentLocation))
+        var request = NSMutableURLRequest(URL:getMethodURLToPostInfo(Methods.studentLocation, id: objectId))
         request = setHeaders(request, setJson: true)
         request.HTTPMethod = "POST"
         request.HTTPBody = Converter.toNSData(studentData)
@@ -167,7 +167,7 @@ class ParseClient : NSObject
     func updateStudentLocation (objectId: String, studentData : [String:AnyObject], completionHandler:(success: Bool, errorMessage: String?) -> Void)
     {
         //Initialize the Request to invoke API.
-        var request = NSMutableURLRequest(URL:getMethodURLForPut(Methods.studentLocation, id: objectId))
+        var request = NSMutableURLRequest(URL:getMethodURLToPostInfo(Methods.studentLocation, id: objectId))
         request = setHeaders(request, setJson: true)
         request.HTTPMethod = "PUT"
         request.HTTPBody = Converter.toNSData(studentData)
@@ -175,6 +175,7 @@ class ParseClient : NSObject
             if error == nil
             {
                 //Success
+                print (result)
                 completionHandler(success: true, errorMessage: nil)
             }
             else
