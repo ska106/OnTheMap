@@ -179,7 +179,7 @@ class InfoPostViewController:UIViewController, UITextFieldDelegate
     {
         dispatch_async(dispatch_get_main_queue())
         {
-            self.stopActivity()
+            self.startActivity(false)
             let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .Alert)
             let okButton = UIAlertAction(title: "OK", style: .Default, handler: completionHandler)
             alert.addAction(okButton)

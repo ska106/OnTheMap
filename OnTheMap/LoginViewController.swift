@@ -63,8 +63,16 @@ class LoginViewController : UIViewController
                 //TODO: Stay on the same page and display error message.
                 if errorMessage == UdacityClient.Errors.loginError
                 {
-                    print (errorMessage)
+                    print ("Login Error Message : " + errorMessage!)
                     self.displayAlert("Login error, please try again.")
+                    
+                }
+                
+                else if errorMessage == UdacityClient.Errors.connectionError
+                {
+                    print ("Login Error Message : " + errorMessage!)
+                    self.displayAlert("Unable to connect to the internet.")
+                    
                 }
                 
                 dispatch_async(dispatch_get_main_queue())
