@@ -98,7 +98,7 @@ class InfoPostViewController:UIViewController, UITextFieldDelegate
                         {
                             self.placemark = results![0]
                             self.initializeScreen(2)
-                            self.stopActivity()
+                            self.startActivity(false)
                             self.mapView.showAnnotations([MKPlacemark(placemark: self.placemark!)], animated: true)
                         }
                     })
@@ -114,7 +114,7 @@ class InfoPostViewController:UIViewController, UITextFieldDelegate
         if (self.mapURLText.text == nil || self.mapURLText.text == "")
         {
             self.displayAlert("Please enter a location.")
-            self.stopActivity()
+            self.startActivity(false)
             return
         }
         else
@@ -155,27 +155,24 @@ class InfoPostViewController:UIViewController, UITextFieldDelegate
                     }
                 })
             }
-            
-            self.stopActivity()
+            self.startActivity(false)
         }
     }
     
-    func startActivity()
+    func startActivity(started:Bool = true)
     {
-        self.activityIndicator.hidden = false
-        self.activityIndicator.startAnimating()
-        self.findButton.enabled = false
-        self.cancelButton.enabled = false
-        self.submitButton.enabled = false
-    }
-    
-    func stopActivity()
-    {
-        self.activityIndicator.hidden = true
-        self.activityIndicator.stopAnimating()
-        self.findButton.enabled = true
-        self.cancelButton.enabled = true
-        self.submitButton.enabled = true
+        self.activityIndicator.hidden = !started
+        self.findButton.enabled = !started
+        self.cancelButton.enabled = !started
+        self.submitButton.enabled = !started
+        if (started)
+        {
+            self.activityIndicator.startAnimating()
+        }
+        else
+        {
+            self.activityIndicator.stopAnimating()
+        }
     }
     
     func displayAlert(message: String, completionHandler: ((UIAlertAction) -> Void)? = nil)
