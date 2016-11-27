@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import MapKit
 
-class InfoPostViewController:UIViewController
+class InfoPostViewController:UIViewController, UITextFieldDelegate
 {
     
     var parseClient : ParseClient!
@@ -39,6 +39,9 @@ class InfoPostViewController:UIViewController
         udClient = UdacityClient.sharedInstance
         
         initializeScreen()
+        
+        self.locationText.delegate = self
+        self.mapURLText.delegate = self
     }
     
     override func viewWillAppear(animated: Bool)
@@ -50,6 +53,12 @@ class InfoPostViewController:UIViewController
     {
         print(">>> cancelAction()")
         self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool
+    {
+        textField.resignFirstResponder()
+        return true;
     }
     
     @IBAction func findAction(sender: AnyObject)
@@ -205,5 +214,4 @@ class InfoPostViewController:UIViewController
             default: break
         }
     }
-    
 }
