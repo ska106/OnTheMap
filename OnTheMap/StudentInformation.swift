@@ -20,7 +20,7 @@ struct StudentInformation
     var mediaURL : String?
     var longitude : Double?
     var latitude : Double?
-    var fullname : String {return "\(firstName) \(lastName)"}
+    var fullname : String {return "\(firstName!) \(lastName!)"}
     
     //As per the rubic cube the struct must have an init method that accepts a dictionary as an argument.
     init(parseResult: [String:AnyObject])
