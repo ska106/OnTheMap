@@ -41,6 +41,12 @@ class MapViewController : UIViewController, MKMapViewDelegate
         udClient = UdacityClient.sharedInstance
         self.loadData()
     }
+    
+    override func viewDidAppear(animated: Bool)
+    {
+        super.viewDidAppear(animated)
+        self.loadData()
+    }
    
     @IBAction func performLogout(sender: AnyObject)
     {
