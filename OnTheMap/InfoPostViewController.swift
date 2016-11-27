@@ -135,6 +135,7 @@ class InfoPostViewController:UIViewController, UITextFieldDelegate
                     if (success)
                     {
                         print ("Data has been updated.")
+                        self.dismissViewControllerAnimated(true, completion: nil)
                     }
                     else
                     {
@@ -148,6 +149,7 @@ class InfoPostViewController:UIViewController, UITextFieldDelegate
                     if (success)
                     {
                         print ("Data has been updated.")
+                        self.dismissViewControllerAnimated(true, completion: nil)
                     }
                     else
                     {
@@ -156,6 +158,7 @@ class InfoPostViewController:UIViewController, UITextFieldDelegate
                 })
             }
             self.startActivity(false)
+            
         }
     }
     
