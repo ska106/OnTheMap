@@ -34,7 +34,12 @@ struct StudentInformation
         self.latitude = parseResult["latitude"] as? Double
     }
     
-    //MARK : This methos will convert the dictionary of StudentInformation into an Array of StudentInformation, which will later be used in creating the pins
+    func getFullName()->String
+    {
+        return self.firstName! + " " + self.lastName!
+    }
+    
+    //MARK : This method will convert the dictionary of StudentInformation into an Array of StudentInformation, which will later be used in creating the pins
     //       in the map kit and the datasource in the ListView page.
     
     static func getLocationsFromResults(results: [[String:AnyObject]]) -> [StudentInformation]
@@ -64,4 +69,6 @@ struct StudentInformation
         }
         return hasNil
     }
+    
+    
 }

@@ -129,11 +129,9 @@ class ListViewController:UIViewController, UITableViewDataSource, UITableViewDel
     // MARK : Function that defines the content for each cell in the table.
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCellWithIdentifier("studentLocationCell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("studentLocationCell", forIndexPath: indexPath) as! StudentLocationTableViewCell
         let location = parseClient.studentLocations[indexPath.row]
-        cell.textLabel?.text = "\(location.firstName!) \(location.lastName!)"
-        cell.imageView?.image = UIImage(contentsOfFile: "pin")
-        cell.detailTextLabel?.text = location.mediaURL
+        cell.configureTableCell(location)
         return cell
     }
 }

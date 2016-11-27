@@ -272,18 +272,15 @@
                                 <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" selectionStyle="blue" indentationWidth="10" reuseIdentifier="studentLocationCell" rowHeight="58" id="XHP-Jc-3iw">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" selectionStyle="blue" indentationWidth="10" reuseIdentifier="studentLocationCell" rowHeight="58" id="XHP-Jc-3iw" customClass="StudentLocationTableViewCell" customModule="OnTheMap" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="600" height="58"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" tableViewCell="XHP-Jc-3iw" id="4qB-HX-g7o">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="58"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="57.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pin" translatesAutoresizingMaskIntoConstraints="NO" id="lOc-gu-0gW">
-                                                    <rect key="frame" x="23" y="7" width="36" height="42"/>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ax8-Qa-jMd">
-                                                    <rect key="frame" x="94" y="8" width="429" height="36"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ax8-Qa-jMd">
+                                                    <rect key="frame" x="90" y="8" width="0.0" height="36"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="429" id="gD9-X0-jKc"/>
                                                     </constraints>
@@ -291,17 +288,28 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7ET-lX-Pad">
+                                                    <rect key="frame" x="23" y="8" width="35" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="Gin-YX-bOX"/>
+                                                        <constraint firstAttribute="width" constant="35" id="wFa-dM-hT6"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottomMargin" secondItem="ax8-Qa-jMd" secondAttribute="bottom" constant="5.5" id="4uF-hj-WER"/>
-                                                <constraint firstItem="ax8-Qa-jMd" firstAttribute="leading" secondItem="lOc-gu-0gW" secondAttribute="trailing" constant="35" id="87S-gn-5Uq"/>
-                                                <constraint firstItem="lOc-gu-0gW" firstAttribute="centerY" secondItem="4qB-HX-g7o" secondAttribute="centerY" id="LY9-Yd-yd4"/>
-                                                <constraint firstItem="lOc-gu-0gW" firstAttribute="top" secondItem="4qB-HX-g7o" secondAttribute="topMargin" constant="-1" id="Smk-8c-7u5"/>
+                                                <constraint firstItem="ax8-Qa-jMd" firstAttribute="leading" secondItem="7ET-lX-Pad" secondAttribute="trailing" constant="32" id="Jmv-Nq-jzP"/>
+                                                <constraint firstItem="7ET-lX-Pad" firstAttribute="top" secondItem="ax8-Qa-jMd" secondAttribute="top" id="QoI-Gr-KUX"/>
+                                                <constraint firstItem="7ET-lX-Pad" firstAttribute="centerY" secondItem="4qB-HX-g7o" secondAttribute="centerY" id="Ug0-k5-EI3"/>
+                                                <constraint firstItem="7ET-lX-Pad" firstAttribute="leading" secondItem="4qB-HX-g7o" secondAttribute="leadingMargin" constant="15" id="kkI-oc-FA2"/>
                                                 <constraint firstItem="ax8-Qa-jMd" firstAttribute="top" secondItem="4qB-HX-g7o" secondAttribute="topMargin" id="o1z-hT-Lz2"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="ax8-Qa-jMd" secondAttribute="trailing" constant="69" id="rwy-Kp-GGe"/>
-                                                <constraint firstItem="lOc-gu-0gW" firstAttribute="leading" secondItem="4qB-HX-g7o" secondAttribute="leadingMargin" constant="15" id="t5x-sg-kdH"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="fullName" destination="ax8-Qa-jMd" id="fkM-a1-Vlp"/>
+                                            <outlet property="pinView" destination="7ET-lX-Pad" id="Z4Q-7R-D4I"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
