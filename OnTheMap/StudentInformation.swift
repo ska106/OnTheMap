@@ -58,7 +58,9 @@ struct StudentInformation
         var hasNil:Bool = false
         if  studentInfo.latitude == nil ||
             studentInfo.longitude == nil ||
-            studentInfo.objectId == nil
+            studentInfo.objectId == nil ||
+            studentInfo.firstName == nil ||
+            studentInfo.lastName == nil
         {
             ////print("Nil Value Found, record must be rejected.")
             hasNil = true
