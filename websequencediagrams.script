@@ -1,0 +1,10 @@
+title On The Map
+Controller->Udacity API:1. getLogin (username/ password)
+Udacity API->Controller:2. return authorized ObjectId(Udacity)
+Controller->Parse API: 3. getStudentLocations (orderby: updatedAt, limit: 100)
+Parse API->Controller: 4. JSON Array of student location information
+Controller->Parse API: 5. findStudent
+note right of Parse API: ObjectId: primaryKey of record in Parse DB \nUniqueKey: ObjectId of Udacity API
+Parse API->Controller: 6. return authorized ObjectId(ParseAPI)
+Controller->Parse API: 7. 'PUT' (updateStudentInformation)
+Parse API->Controller: 8. return success state
